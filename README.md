@@ -15,7 +15,7 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 ## Define your Computer parameters:
 
-	In python/piranhas.py @param_init():
+In python/piranhas.py @param_init():
 
   pixel_res_width = 800 # in pixels
   pixel_res_height = 600 # in pixels
@@ -24,7 +24,7 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 ## Define your Human (Viewing Distance) parameters:
 
-	In python/piranhas.py @param_init():
+In python/piranhas.py @param_init():
 
   view_dist = 64 # in cm
   cm_per_pixel = mon_width/pixel_res_width;
