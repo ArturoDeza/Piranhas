@@ -1,0 +1,353 @@
+local piranhas = {}
+
+-- set everything to zero at beginning before initialization
+
+param = {pixel_res_width=0,
+pixel_res_height = 0,
+mon_width = 0,
+mon_height = 0,
+view_dist = 0,
+gamma_c = 0,
+psi_c = 0,
+cm_per_pixel = 0,
+deg_per_pixel = 0,
+orien = 0,
+wave_num = 0,
+freq_zero = 0,
+bandwidth = 0,
+visual_field_radius_in_deg = 0,
+fovea = 0,
+scale = 0,
+e0_in_deg = 0,
+visual = 0,
+visual_mask = 0
+}
+
+function param:param_init_all(o)
+	o = o or {}
+	setmetatable(o, self)
+	self.__index = self
+	self.pixel_res_width = 800 -- in pixels
+	self.pixel_res_height = 800 -- in pixels
+	self.mon_width = 37.5 -- in cm
+	self.mon_height = 30 -- in cm
+	self.view_dist = 64 -- in cm
+	self.gamma_c = 1 -- gabor parameter
+	self.psi_c = 0 -- gabor parameter
+	self.cm_per_pixel = (self.mon_width)/(self.pixel_res_width)
+	self.deg_per_pixel = 2*math.deg(math.atan(self.cm_per_pixel/2/self.view_dist))
+	-- Gabor Filter parameters
+	self.orien = 8
+	self.wave_num = 3
+	self.freq_zero = 1.0
+	self.bandwidth = 1.0
+	-- Field of View Model Parameters
+	self.visual_field_radius_in_deg = 10.0
+	self.fovea = 1.0
+	self.scale = 0.5
+	self.e0_in_deg = 0.25
+	self.visual = 1
+	self.visual_mask = 1
+	return o
+end
+
+-- Output of function will be N_e and N_theta
+function get_pooling_parameters(scale,e0_in_deg,visual_field_radius_in_deg,deg_per_pixel)
+
+	w_theta = scale/2
+	N_theta = math.floor(2*math.pi/w_theta)
+
+	e_0 = e0_in_deg
+	visual_field_width = math.floor(0.5+2*(visual_field_radius_in_deg/deg_per_pixel))
+	e_r = visual_field_width/2*deg_per_pixel
+
+	w_ecc = scale
+	N_e = math.ceil((math.log(e_r)-math.log(e_0))/w_ecc) -- Holding this computation from the MATLAB implementation
+
+	return N_e, N_theta 
+end
+
+-- Ouput of functions will be regions array
+function create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e):
+
+	e0_in_deg = 0.25
+	e_max = 10
+	visual_field_width = 477
+	deg_per_pixel = 0.042
+	N_theta = 25
+	N_e = 8
+
+	require 'torch'
+	require 'gnuplot'
+
+	-- Visual flag on?
+
+	visual = 0
+
+	center_r = math.floor(0.5 + visual_field_width/2)
+	center_c = center_r
+
+	-- This is where the magic happens:
+	regions = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta,N_e}) 
+	
+	visual_field_width_half = math.floor(0.5 + visual_field_width*1.0/2)
+	visual_field_max = math.sqrt(2*visual_field_width_half^2)
+
+	x_vec = torch.linspace(-1,1,visual_field_width)
+	y_vec = torch.zeros(visual_field_width)
+
+	for i=1,visual_field_width do
+		if (x_vec[i]>=-0.75) and (x_vec[i]<-0.25) then
+			y_vec[i] = math.cos((math.pi/2)*(x_vec[i]+0.25)*2)^2
+		elseif (x_vec[i]>=-0.25) and (x_vec[i]<0.25) then
+			y_vec[i] = 1.0
+		elseif (x_vec[i]>=0.25) and (x_vec[i]<0.75) then
+			y_vec[i] = -(math.cos((math.pi/2)*(x_vec[i]+0.75)*2))^2
+		else
+			-- Do Nothing
+		end
+	end
+
+	-- Initalize hyperparameters for the h function:
+
+	w_theta = 2*math.pi/N_theta
+	t = 0
+
+	-- Creating the h function
+
+	h = torch.zeros(visual_field_width)
+
+	arg_h = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
+	h_vec = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
+
+	for j=1,N_theta do
+		for i=1,visual_field_width + 1 + visual_field_width do
+
+			arg_h[j][i] = (((i-1)*1.0/visual_field_width)*2*math.pi - ((w_theta*(j-1))+(w_theta*(1-t)/2)))/w_theta
+
+			if (arg_h[j][i]<-0.75) then
+				h_vec[j][i] = 0
+			elseif (arg_h[j][i]>=-0.75) and (arg_h[j][i]<-0.25) then
+				h_vec[j][i] = math.cos((math.pi/2)*((arg_h[j][i]+0.25)*2))^2
+			elseif (arg_h[j][i]>=-0.25) and (arg_h[j][i]<0.25) then
+				h_vec[j][i] = 1
+			elseif (arg_h[j][i]>=0.25) and (arg_h[j][i]<0.75) then
+				h_vec[j][i] = 1 - (math.cos((math.pi/2)*((arg_h[j][i]-0.75)*2)))^2 
+			elseif (arg_h[j][i]>0.75) then
+				h_vec[j][i] = 0
+			end
+		end
+	end
+
+	-- Visualize the h_vec piranha function:
+
+	if (visual==1) then
+		-- Multiplot option/flag? To do!
+		gnuplot.raw("set multiplot")
+		for i=1,N_theta do
+			gnuplot.plot(h_vec:select(1,i))
+		end
+		gnuplot.raw("unset multiplot")
+	end
+
+	-- Initialize hyperparameters for g function
+
+	e_0 = e0_in_deg
+	e_r = visual_field_width*math.sqrt(2)/2*deg_per_pixel
+
+	N_ecc = N_e
+	w_ecc = (math.log(e_r)-math.log(e_0))/N_ecc
+
+	arg_g = torch.zeros(N_ecc,visual_field_width+1+visual_field_width)
+	g_vec = torch.zeros(N_ecc,visual_field_width+1+visual_field_width)
+
+	for j=1,N_ecc do
+		for i=1,visual_field_width+1+visual_field_width do
+
+			arg_g[j][i] = (math.log((i-1+0.00001)*e_r/(visual_field_width*math.sqrt(2))) - (math.log(e_0)+w_ecc*(j)))/w_ecc
+
+			if arg_g[j][i] < -0.75 then
+				g_vec[j][i] = 0
+			elseif arg_g[j][i] >=0 -0.75 and arg_g[j][i]<-0.25 then
+				g_vec[j][i] = (math.cos((math.pi/2)*((arg_g[j][i]+0.25)*2)))^2
+			elseif arg_g[j][i] >= -0.25 and arg_g[j][i] < 0.25 then
+				g_vec[j][i] = 1
+			elseif arg_g[j][i] >= 0.25 and arg_g[j][i] < 0.75 then
+				g_vec[j][i] = 1 - (math.cos((math.pi/2)*((arg_g[j][i]-0.75)*2)))^2
+			elseif arg_g[j][i] >= 0.75 then
+				g_vec[j][i] = 0
+			end
+
+		end
+	end
+
+	if visual == 1 then
+		gnuplot.raw("set multiplot")
+		for i=1,N_ecc do
+			gnuplot.plot(g_vec:select(1,i))
+		end
+		gnuplot.raw("unset multiplot")
+	end
+
+	 -- Now get the x,y coordinates from the polar coordinates
+	
+	map = torch.zeros(visual_field_width,visual_field_width)
+	map2 = torch.zeros(visual_field_width,visual_field_width)
+
+	theta_temp_matrix = torch.zeros(visual_field_width,visual_field_width)
+
+	ang_sign = 1
+
+	map_hybrid = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta,N_e}) 
+	map_hybrid2 = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta,N_e}) 
+
+	ang_hybrid = torch.zeros(visual_field_width,visual_field_width) 
+	ecc_hybrid = torch.zeros(visual_field_width,visual_field_width) 
+	
+	true_ang_matrix = torch.zeros(visual_field_width,visual_field_width)
+	ang_theta_matrix = torch.zeros(visual_field_width,visual_field_width)
+
+	ecc_matrix = torch.zeros(visual_field_width,visual_field_width)
+	theta_matrix = torch.zeros(visual_field_width,visual_field_width)
+
+	for i=1,visual_field_width do
+		for j=1,visual_field_width do
+
+	--for i=232,232 do
+		--	for j=238,238 do
+
+			-- Optimized Implementation.
+
+			-- Get Distance from center:
+			dist = math.sqrt((visual_field_width_half-i)^2 + (visual_field_width_half-j)^2)
+
+			-- Get Angle from center:
+			if i~=visual_field_width_half and j~= visual_field_width_half then
+				
+				ang = torch.atan2(visual_field_width_half-i,j-visual_field_width_half)
+				true_ang = ang
+
+				if i < visual_field_width_half and j < visual_field_width_half then
+					true_ang = math.pi + ang
+				end
+
+				if i>=visual_field_width_half and j >= visual_field_width_half then
+					true_ang = math.pi + ang
+				end
+
+				if i<=visual_field_width_half and j >	visual_field_width_half then
+					true_ang = math.pi + ang
+				end
+
+				if i>visual_field_width_half and j <= visual_field_width_half then
+					true_ang = math.pi + ang
+				end
+
+			else
+				ang = 0
+				true_ang = ang
+			end
+
+			if i <= visual_field_width_half and j == visual_field_width_half then
+				true_ang = torch.atan2(visual_field_width_half-i,1) + math.pi
+			end
+
+			if j > visual_field_width_half and i==visual_field_width_half then
+				true_ang = torch.atan2(visual_field_width_half-i,1) + math.pi
+			end
+
+			if j == visual_field_width_half and i > visual_field_width_half then
+				true_ang = torch.atan2(visual_field_width_half-i,1) + math.pi
+			end
+
+			-- Find Closest Angle match:
+			ang_match = math.floor(0.5 + true_ang/(2*math.pi)*visual_field_width)
+
+			-- Find Closest Eccentricity match:
+			dist_match = math.floor(0.5 + dist/(visual_field_width/2)*visual_field_width)
+
+			if ang_match<=0 then
+				ang_match = 1
+			end
+
+			if dist_match<=0 then
+				dist_match = 1
+			end
+ 
+			-- Get Hybrid Computations
+			ang_hybrid[i][j] = math.ceil(true_ang/(2*math.pi)*N_theta)
+
+			if ang_hybrid[i][j] <= 0 then
+				ang_hybrid[i][j] = 1
+			end			
+
+			ecc_hybrid[i][j] = math.ceil(dist_match/visual_field_max/2*N_ecc)
+
+			if ecc_hybrid[i][j]>N_ecc then
+				ecc_hybrid[i][j] = N_ecc
+			end
+
+			-- Also find the theta value and eccentricity:
+			theta_temp = math.ceil(ang_match/(visual_field_width/N_theta))
+			true_ang_matrix[i][j] = true_ang
+
+			ang_theta_matrix[i][j] = math.floor(true_ang*N_theta/(2*math.pi)) + 1
+
+			temp_ecc = torch.nonzero(torch.eq(g_vec:select(2,dist_match),torch.max(g_vec:select(2,dist_match))))
+			
+			if temp_ecc[1]:storage():size() > 1 then
+				ecc_matrix[i][j] = 1
+			else
+				ecc_matrix[i][j] = temp_ecc[1][1]
+			end
+
+			if ecc_matrix[i][j] == (N_theta+1) then
+				ecc_matrix[i][j] = N_theta
+			end
+
+			--temp_theta = torch.nonzero(math.max(h_vec:select(2,ang_match))==h_vec:select(2,ang_match))
+			temp_theta = torch.nonzero(torch.eq(h_vec:select(2,ang_match),torch.max(h_vec:select(2,ang_match))))
+
+			if temp_theta[1]:storage():size() > 1 then
+				theta_matrix[i][j] = 1
+			else
+				theta_matrix[i][j] = temp_theta[1][1]
+			end
+
+			if theta_matrix[i][j] == (N_theta + 1) then
+				theta_matrix[i][j] = 1
+			end
+				
+
+			h_buffer_indx = torch.nonzero(torch.gt(h_vec:select(2,ang_match),0))
+			g_buffer_indx = torch.nonzero(torch.gt(g_vec:select(2,dist_match),0))
+
+			-- Get Smooth shadow tones for every region:
+			
+			if h_buffer_indx:nDimension()>=1 and g_buffer_indx:nDimension()>=1 then
+				for z1=1,h_buffer_indx[1]:storage():size() do
+					for z2=1,g_buffer_indx[1]:storage():size() do
+						map_hybrid2[i][j][h_buffer_indx[z1][1]][g_buffer_indx[z2][1]] = h_vec[h_buffer_indx[z1][1]][ang_match] * g_vec[g_buffer_indx[z2][1]][dist_match]
+					end
+				end
+			end
+
+			hybrid_buffer = map_hybrid2[{i,j,{},{}}]
+			map2[i][j] = torch.max(hybrid_buffer:view(hybrid_buffer:nElement()))
+
+			--print(i)
+
+		end
+	end
+
+	--if visual then
+		gnuplot.imagesc(map2,'color')
+
+
+
+	return nil
+
+end
+
+return piranhas
+
