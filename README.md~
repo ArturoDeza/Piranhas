@@ -32,5 +32,5 @@ In python/piranhas.py @param_init():
   view_dist = 64 # in cm
   cm_per_pixel = mon_width/pixel_res_width;
   deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
-
+	```
 

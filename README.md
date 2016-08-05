@@ -17,20 +17,20 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 In python/piranhas.py @param_init():
 
-	```python
-  pixel_res_width = 800 # in pixels
-  pixel_res_height = 600 # in pixels
-  mon_width = 37.5 # in cm
-  mon_height = 30 # in cm
-	```
+```python
+pixel_res_width = 800 # in pixels
+pixel_res_height = 600 # in pixels
+mon_width = 37.5 # in cm
+mon_height = 30 # in cm
+```
 
 ## Define your Human (Viewing Distance) parameters:
 
 In python/piranhas.py @param_init():
 
-	```python
-  view_dist = 64 # in cm
-  cm_per_pixel = mon_width/pixel_res_width;
-  deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
-	```
+```python
+view_dist = 64 # in cm
+cm_per_pixel = mon_width/pixel_res_width;
+deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
+```
 
