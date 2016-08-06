@@ -49,7 +49,7 @@ to preserve the total input space in the degrees space. It is easy to see that i
 
 	X_deg = x_pixels * deg_per_pixel (on a monitor) and Y_deg = y_pixels * deg_per_pixel (on a monitor)
 
-but equivalent ways to get the same X_deg by Y_deg dimensions are:
+but equivalent ways to get the same `X_deg` by `Y_deg` dimensions are:
 
 	X_deg = (x_pixels/2) * (deg_per_pixels*2) and Y_deg = (y_pixels/2) * (deg_per_pixels*2)
 
@@ -58,6 +58,13 @@ or
 	X_deg = (x_pixels*2) * (deg_per_pixels/2) and Y_deg = (y_pixels*2) * (deg_per_pixels/2)
 
 ## Degrees of Visual Angle Illustrated:
+
+![EyeTrackerSettings](/images/EyeTrackerSettings.jpg)
+Format: ![Alt Text](url)
+
+Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See EyeLink 1000 SR Research, User Manual for more information):
+
+
 
 
 
