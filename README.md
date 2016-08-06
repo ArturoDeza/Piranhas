@@ -60,7 +60,8 @@ or
 ## Degrees of Visual Angle Illustrated:
 
 ![EyeTrackerSettings](/images/EyeTrackerSettings.jpg)
-Drawing courtesy of [Katie Koelher](https://koehler.moonfruit.com/home)
+
+Drawing courtesy of [Katie Koelher](https://koehler.moonfruit.com/home/4580555573)
 
 Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See EyeLink 1000 SR Research, User Manual for more information).
 
