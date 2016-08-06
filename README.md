@@ -91,7 +91,16 @@ Here is a list of Deep Learning papers that have foveal/peripheral-like mechanis
 
 ### Q: I do Computer Vision, what can I get out of Piranhas toolkit?
 
+One of the main goals in Computer Vision is give the gift of sight to computers i.e. produce human-like levels of performance in ILSVRC and on image datasets like MNIST,LabelMe, SUN, ImageNet, and MSCOCO. While it is debatable if computers should in fact have the same (artificial) visual perception algorithms as humans, we think that the use of experimenting with clevelrly designed peripheral architectures opens a realm of possibilities for future solutions and new problems in the field of computer vision. 
+
 Here is a list of Computer Vision papers that have foveal/peripheral-like mechanisms:
+
+### Q: I do Robotics, what can I get out of Piranhas toolkit?
+
+Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is current hot topic, and adding peripheral constraints similar to 
+an animals eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you know an eagle has two foveas?
+
+Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
 ### Q: I do Vision Science, what can I get out of Piranhas toolkit?
 
