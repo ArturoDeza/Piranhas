@@ -63,7 +63,7 @@ or
 
 Drawing courtesy of [Katie Koelher](http://koehler.moonfruit.com/home/4580555573)
 
-Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See EyeLink 1000 SR Research, User Manual for more information).
+Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
 
 ## [FAQ]: Frequenty Asked Questions:
 
@@ -82,6 +82,5 @@ A: No.
 ### Q: I do Computer Vision, what can I get out of Piranhas toolkit?
 
 ### Q: I do Vision Science, what can I get out of Piranhas toolkit?
-
 
 
