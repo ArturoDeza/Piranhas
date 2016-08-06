@@ -77,10 +77,23 @@ the same physical dimensions can go up to: 2096x2800. These are commonly called 
 
 A: No.
 
+### Q: I want to create my own peripheral architecture, what should I do?
+
 ### Q: I do Deep Learning, what can I get out of Piranhas toolkit?
+
+Deep Learning has begun embracing a strong trend in mimicking neuroscience-like mechanisms in their algorithms. Beginning by Perceptrons with Neurons, hierarchical structure of V1, V2, V4, and IT with Deep Networks with CNN's, and RNN's + LSTM's with Overt Attention Mechanisms.
+While there is still much more work to be done in Deep Learning, and we are far from understanding intelligence there have been remarkable successes
+in borrowing these ideas from Neuroscience and giving them an engineering twist to make them applicable in Deep Learning systems.
+
+We believe that one of the main unexplored areas in Computer Vision and Deep Learning is the use of a periphery and/or covert systems in recognition, registration and possibly egocentric vision. Perhaps with this toolkit, many deep learning scientists and engineers can help the vision community understand the answer to this question.
+
+Here is a list of Deep Learning papers that have foveal/peripheral-like mechanisms:
 
 ### Q: I do Computer Vision, what can I get out of Piranhas toolkit?
 
+Here is a list of Computer Vision papers that have foveal/peripheral-like mechanisms:
+
 ### Q: I do Vision Science, what can I get out of Piranhas toolkit?
 
+Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
 
