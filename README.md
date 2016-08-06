@@ -60,12 +60,27 @@ or
 ## Degrees of Visual Angle Illustrated:
 
 ![EyeTrackerSettings](/images/EyeTrackerSettings.jpg)
-Format: ![Alt Text](url)
+Drawing courtesy of [Katie Koelher](https://koehler.moonfruit.com/home)
 
-Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See EyeLink 1000 SR Research, User Manual for more information):
+Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See EyeLink 1000 SR Research, User Manual for more information).
 
+## [FAQ]: Frequenty Asked Questions:
 
+### Q: It seems like there are many possible settings to create a `deg_per_pixel rate`, which ones do I pick?
 
+A: In general there will be some contraints that are inmutable such as the dimensions of the monitor you are using, such as the monitor width and height of the visible area. Another semi-flexible constraint can be viewing distance in the EyeTracker. It is a general norm to have the monitor between 50 to up to 80 cm of viewing distance. You can play with these parameters. Other free parameters include monitor resolution (however these are discrete values contingent on quality of monitors: 800x600, or 1280x1024 are classic settings). In radiology monitors of about
+the same physical dimensions can go up to: 2096x2800. These are commonly called 5 Megapixel resolution monitors. As a good rule of thumb, creating
+`deg_per_pixel` values that go from 0.022 up to 0.044 are pretty reasonble to simulate in a lab environment.
+
+### Q: Should degrees of visual angle be a standard in Computer Vision?
+
+A: No.
+
+### Q: I do Deep Learning, what can I get out of Piranhas toolkit?
+
+### Q: I do Computer Vision, what can I get out of Piranhas toolkit?
+
+### Q: I do Vision Science, what can I get out of Piranhas toolkit?
 
 
 
