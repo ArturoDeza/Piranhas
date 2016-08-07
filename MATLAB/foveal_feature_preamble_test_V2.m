@@ -1,6 +1,6 @@
 %Set Initial Parameters:
 
-function foveal_param = clutter_metamer_preamble_V2
+function foveal_param = foveal_feature_preamble_test_V2
 
 % Add extra paths & Preamble:
 rng('shuffle');
@@ -45,19 +45,13 @@ bandwidth = 1;
 % Field of View Model Paramaters %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-visual_field_radius_in_deg = 24;
 %visual_field_radius_in_deg = 12;
-%visual_field_radius_in_deg = 10;
-%visual_field_radius_in_deg = 5;
-fovea = 2.0;
-%scale = 0.5; %This scale is for V2
-scale = 0.25; %This scale is for V1
-%scale = 0.5
-
 visual_field_radius_in_deg = 10;
+%visual_field_radius_in_deg = 5;
 fovea = 1.0;
-scale = 0.5;
-
+scale = 0.5; %This scale is for V2
+%scale = 0.25; %This scale is for V1
+%scale = 0.5
 
 e0_in_deg = 0.25;
 
@@ -78,7 +72,7 @@ visual_mask = 1;
 % Compute Peripheral Filters %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel, N_e, N_theta, visual_field_radius_in_deg, fovea,e0_in_deg, visual);
+peripheral_filters = generate_pooling_regions_vector(deg_per_pixel, N_e, N_theta, visual_field_radius_in_deg, fovea,e0_in_deg, visual);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Compute Peripheral Mask stream %
@@ -92,8 +86,6 @@ N_e = Ne_check;
 select_mask_stream = cell(N_theta*N_e,1);
 select_mask_label = zeros(peri_height,peri_width);
 
-
-
 for z = 1:N_theta*N_e
 	i1 = rem(z,N_theta);
 	if i1==0
@@ -101,9 +93,9 @@ for z = 1:N_theta*N_e
 	end
 
 	j1 = floor((z-0.1)/N_theta)+1;
-%	select_mask_stream{z} = (squeeze(peripheral_filters.regions(i1,j1,:,:))~=0); %Previous implementation
+	select_mask_stream{z} = (squeeze(peripheral_filters.regions(i1,j1,:,:))~=0); %Previous implementation
 %	select_mask_stream{z} = (squeeze(peripheral_filters.regions(i1,j1,:,:))>=0); %Bad
-	select_mask_stream{z} = squeeze(peripheral_filters.regions(i1,j1,:,:));
+	%select_mask_stream{z} = squeeze(peripheral_filters.regions(i1,j1,:,:));
 
 	%Previuous implementation:
 	%select_mask_label = select_mask_label + select_mask_stream{z}*z;
@@ -165,7 +157,7 @@ end
 for mm=1:wave_num*orien
 	i1 = rem(mm,wave_num);
 	if i1==0
-		i1 = wave_num;
+		i1 = wave_num;	
 	end
 
 	j1 = floor((mm-0.1)/wave_num)+1;
@@ -204,3 +196,7 @@ foveal_param.monitor.pixel_res_height = param.pixel_res_height;
 foveal_param.monitor.mon_width = param.mon_width;
 foveal_param.monitor.mon_height = param.mon_height;
 foveal_param.monitor.view_dist = param.view_dist;
+
+
+
+

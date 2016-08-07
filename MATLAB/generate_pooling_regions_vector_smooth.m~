@@ -248,5 +248,6 @@ if visual
 		%foveal_step_box = fovea_radius/deg_per_pixel;
 		%
 		%%Draw a box around the foveal region:
-    %rectangle('position', [visual_field_width/2-foveal_step_box+1 visual_field_width/2-foveal_step_box+1 2*foveal_step_box 2*foveal_step_box], 'edgecolor', 'k', 'linewidth', 2); 
+    %rectangle('position', [visual_field_width/2-foveal_step_box+1 visual_field_width/2-foveal_step_box+1 2*foveal_step_box 2*foveal_step_box], 'edgecolor', 'k', 'linewidth', 2);
+ 
 end

@@ -1,9 +1,9 @@
 # Piranhas
-A Toolkit for creating Peripheral Architectures
+A Toolkit for creating Peripheral Architectures.
 
-This toolkit was used to create the peripheral architectures of the paper "Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?" by Arturo Deza & Miguel Eckstein, 2016.
+This toolkit was implemented and used to create the peripheral architectures of the paper "Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?" by Arturo Deza & Miguel Eckstein, 2016.
 
-The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. With recent trends in RNN's, and Attention-based Networks, we decided to make our toolkit public to stimulate 'hybrid' ideas in the general vision (human,computer,robot) community.
+The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
 # What is a Peripheral Architecture?
 A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011]. 
@@ -12,6 +12,8 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 1) Download our toolbox to create Peripheral Architectures at your convenience in MATLAB, python or Torch.
 2) Define your viewing parameters.
+
+# Create a Piranha
 
 ## Define your Computer parameters:
 
@@ -65,6 +67,8 @@ Drawing courtesy of [Katie Koelher](http://koehler.moonfruit.com/home/4580555573
 
 Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
 
+
+
 ## [FAQ]: Frequenty Asked Questions:
 
 ### Q: It seems like there are many possible settings to create a `deg_per_pixel rate`, which ones do I pick?
@@ -78,6 +82,8 @@ the same physical dimensions can go up to: 2096x2800. These are commonly called 
 A: No.
 
 ### Q: I want to create my own peripheral architecture, what should I do?
+
+Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo).
 
 ### Q: I do Deep Learning, what can I get out of Piranhas toolkit?
 
@@ -103,6 +109,8 @@ an animals eye may play an important role in path-planning for an agent in its e
 Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
 ### Q: I do Vision Science, what can I get out of Piranhas toolkit?
+
+
 
 Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
 

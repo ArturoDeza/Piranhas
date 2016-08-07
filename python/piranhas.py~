@@ -464,6 +464,8 @@ def generate_pooling_regios_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field
 	peripheral_filters.centers = peripheral_filters.centers[:,:,n_e_limit:]
 	peripheral_filters.areas = peripheral_filters.areas[:,n_e_limit:]
 
+	# Everything till here is good (vs MATLAB vesion).
+
 	# Have to do this since python 2.7 doesn't support MultiDimensional List Slicing
 	# If someone has a workaround go for it.
 

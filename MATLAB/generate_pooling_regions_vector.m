@@ -1,4 +1,4 @@
-function peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel, ...
+function peripheral_filters = generate_pooling_regions_vector(deg_per_pixel, ...
     N_e, N_theta, visual_field_radius_in_deg, fovea, e0_in_deg, visual)
 
 %Arturo's to go settings:
@@ -51,7 +51,7 @@ center_c = center_r;
 %regions = create_regions_vector_function(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
 
 %Smooth implementation:
-regions = create_regions_vector_function_smooth_FS(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
+regions = create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
  
 
 %close(h)
@@ -83,8 +83,7 @@ filters.centers = centers;
 filters.areas = areas;
 
 %blindspot_threshold = 0.4;
-%blindspot_threshold = 0.1;
-blindspot_threshold = 0.0;
+blindspot_threshold = 0.1;
 
 %% offset coordinates for pooling regions
 center_r = round(size(filters.regions,3)/2);
@@ -97,7 +96,7 @@ for nt=1:size(filters.regions,1)
         filters.weights{nt,ne} = filters.regions(idxs);
         
         % unique pixels for this cell
-        [rs,cs] = find(squeeze(filters.regions(nt,ne,:,:))>blindspot_threshold);
+        [rs,cs] = find(squeeze(filters.regions(nt,ne,:,:))>=blindspot_threshold);
 
         filters.uniq_pix{nt,ne} = [rs cs];
     end
@@ -180,19 +179,19 @@ fovea_radius = fovea;
 peripheral_filters = filters;
 
 % decide upto which cell to discard (along the radial axis)
-for n_e=1:ne
+for n_e=1:size(peripheral_filters.regions,2)
     offsets = abs(peripheral_filters.offsets{1,n_e});
     
     % see how much of this cell is within the fovea
-    within = offsets(:,1)<=fovea_radius/deg_per_pixel & offsets(:,2)<=fovea_radius/deg_per_pixel;
+    within = offsets(:,1)<=fovea_radius/deg_per_pixel & ...
+        offsets(:,2)<=fovea_radius/deg_per_pixel;
     
     if sum(within)/length(within)<.5
-				n_e_limit = n_e;
         break
     end
 end
 
-% discard upto (not including) n_e_limit
+% discard upto (not including) n_e
 peripheral_filters.regions = peripheral_filters.regions(:,n_e:end,:,:);
 peripheral_filters.centers = peripheral_filters.centers(:,:,n_e:end);
 peripheral_filters.areas = peripheral_filters.areas(:,n_e:end);
@@ -201,8 +200,7 @@ peripheral_filters.weights = peripheral_filters.weights(:,n_e:end);
 peripheral_filters.uniq_pix = peripheral_filters.uniq_pix(:,n_e:end);
 
 % discard low weight pixels
-weight_threshold = 0.0;
-%weight_threshold = .3;
+weight_threshold = .3;
 
 %Decreaste the low weight to improve interpolation values:
 %weight_threshold = 0.1;
@@ -225,28 +223,46 @@ end
 
 %peripheral_filters = rmfield(peripheral_filters, 'uniq_pix');
 
-%Optional: Draw a box around the fovea:
-
 %% visualize it
 if visual
-
-    W = reshape(peripheral_filters.regions, [numel(peripheral_filters.offsets),visual_field_width visual_field_width]);
+    visual_field_width = size(peripheral_filters.regions,3);
+    W = reshape(peripheral_filters.regions, [numel(peripheral_filters.offsets) ...
+        visual_field_width visual_field_width]);
     W = squeeze(max(W,[],1));
-    figure, imagesc(W), colorbar;
-
-    hold on;
-
-		%This is optional:
-		%
-		%%Draw a White plus in the center:
-    %plot(visual_field_width/2,visual_field_width/2,'w+');
-    %
-		%%Only show 5 ticks on each side (keep it simple):
-    %set(gca,'XTick',[0:visual_field_width/4:visual_field_width]);
-    %set(gca,'YTick',[0:visual_field_width/4:visual_field_width]);
-		%
-		%foveal_step_box = fovea_radius/deg_per_pixel;
-		%
-		%%Draw a box around the foveal region:
-    %rectangle('position', [visual_field_width/2-foveal_step_box+1 visual_field_width/2-foveal_step_box+1 2*foveal_step_box 2*foveal_step_box], 'edgecolor', 'k', 'linewidth', 2); 
+    figure, imagesc(W), colorbar
+    hold on
+    plot(visual_field_width/2 +.5, visual_field_width/2 +.5, 'w+');
+    
+    x = get(gca, 'xtick');
+    y = get(gca, 'ytick');
+    
+    % convert to degrees
+    x = (x - visual_field_width/2)*deg_per_pixel;
+    y = (y - visual_field_width/2)*deg_per_pixel;
+    
+    set(gca, 'xticklabel', arrayfun(@(x) sprintf('%.1f',x), x, ...
+        'uniformoutput',false));
+    set(gca, 'yticklabel', arrayfun(@(x) sprintf('%.1f',x), y, ...
+        'uniformoutput',false));
+    
+     % draw foveal region
+     rectangle('position', [-fovea_radius/deg_per_pixel + visual_field_width/2 ...
+         -fovea_radius/deg_per_pixel+visual_field_width/2 ...
+         2*fovea_radius/deg_per_pixel 2*fovea_radius/deg_per_pixel], ...
+         'edgecolor', 'k', 'linewidth', 2)
+    
+     %for i=3:8:visual_field_width
+     %    line([i i], [1 visual_field_width], 'color', 'w');
+     %    line([1 visual_field_width],[i i], 'color', 'w');
+     %end
+    
+    %for x=219:8:323
+    %    for y=219:8:323
+    %        center = [x+4 - visual_field_width/2, y+4 - visual_field_width/2];
+    %        if sqrt(sum(center.^2))<55
+    %            
+    %            rectangle('position', [x y 8 8], 'edgecolor', 'w');
+    %        end
+    %    end
+    %end
 end
