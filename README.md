@@ -43,12 +43,12 @@ cm_per_pixel = mon_width/pixel_res_width;
 deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
 ```
 
-In the @param_init() class, we define the `deg_per_pixel` which indicates a rate of how many degrees a human observer is seeing per pixel. Conversely, pixel_per_degree would be the opposite rate and seems a bit easier to intepret since we are using values above 0. Example:
-In our study (Deza & Eckstein, 2016) the deg_per_pixel is 0.022 for our EyeTracking Experiments, but the deg_per_pixel conversion scale in 
+In the` @param_init()` class, we define the `deg_per_pixel` which indicates a rate of how many degrees a human observer is seeing per pixel. Conversely, `pixel_per_degree` would be the opposite rate and seems a bit easier to intepret since we are using values above 0. Example:
+In our study (Deza & Eckstein, 2016) the deg_per_pixel is 0.022 for our EyeTracking Experiments, but the `deg_per_pixel` conversion scale in 
 our peripheral architecture is 0.042 (twice the size, and computed with the values scenes in the example above).
 
 Increasing the `deg_per_pixel` rate in a simulation has its advantages, mainly the fact that we can now downsample or resize our image input image,
-to preserve the input information in the degrees space. It is easy to see that if an image is viewd at `X_deg` by `Y_deg` degrees of visual angle, then 
+to preserve the input information in the degrees space. It is easy to see that if an image is viewed at `X_deg` by `Y_deg` degrees of visual angle, then 
 
 	X_deg = x_pixels * deg_per_pixel (on a monitor) and Y_deg = y_pixels * deg_per_pixel (on a monitor)
 
@@ -69,9 +69,16 @@ Drawing courtesy of [Katie Koelher](http://koehler.moonfruit.com/home/4580555573
 Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
 
 ## Create a Peripheral Architecture
+
+Python:
 ```
 $ python create_Piranha.py
 ```
+
+Torch:
+
+
+Matlab:
 
 
 
