@@ -122,18 +122,12 @@ Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
 ### Q: I do Vision Science, what can I (get out of) / (do for) Piranhas toolkit?
 
-
-
 Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
-
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
 Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the 
-[VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm){:target="_blank"}.
-<html>
-<a href="https://labs.psych.ucsb.edu/eckstein/miguel/index.htm" target="_blank">VIU-Lab @ UCSB</a>
-</html>
+[VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm).
 
 If you found this code useful for your research, please cite:
 ```
@@ -148,5 +142,5 @@ howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
 ```
 
 ### Papers that use Piranhas Toolkit
-* "Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?" by Arturo Deza & Miguel Eckstein, ArXiv 2016.
-* "Object Detection Through Exploration With A Foveated Visual Field" by Emre Akbas & Miguel Eckstein, ArXiv 2014.
+* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, ArXiv 2016.
+* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014.
