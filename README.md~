@@ -33,7 +33,7 @@ These parameters are useful for two main reasons:
 calculate equivalent image/target appearance in terms of d.v.a. (degrees of visual angle). 
 * If creating a Peripheral Architecture, it is better to make sure that is is having some sort of biological plausibility. Example: If you want to define a human fovea to have a value ranging between 1-2 degrees (as constrainted biologically), then you would like that the fovea occupies a reasonable size in pixel space. This will make more sense when we cover the basics of degrees of visual angle.
 
-## Define your Human (Viewing Distance) parameters:
+## Define your Human parameters:
 
 In python/piranhas.py @param_init():
 
@@ -41,6 +41,17 @@ In python/piranhas.py @param_init():
 view_dist = 64 # in cm
 cm_per_pixel = mon_width/pixel_res_width;
 deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
+
+
+  ##################################
+  # Field of View Model Parameters #
+  ##################################
+  
+  visual_field_radius_in_deg = 10 # This is the total visual field_radius in deg
+  fovea = 1.0 # This is the approximate foveal radius.
+  #scale = 0.25 # This is for V1 receptive field size pooling regions.
+  scale = 0.5 # This is for V2 receptive field size pooling regions.
+
 ```
 
 In the` @param_init()` class, we define the `deg_per_pixel` which indicates a rate of how many degrees a human observer is seeing per pixel. Conversely, `pixel_per_degree` would be the opposite rate and seems a bit easier to intepret since we are using values above 0. Example:
