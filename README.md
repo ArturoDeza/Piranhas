@@ -29,10 +29,9 @@ mon_height = 30 # in cm
 
 These parameters are useful to put in for two main reasons: 
 
-1. If you are performing EyeTracking experiments and/or psychophysics, then you can then
+* If you are performing EyeTracking experiments and/or psychophysics, then you can then
 calculate equivalent image/target appearance in terms of d.v.a. (degrees of visual angle). 
-
-2. If creating a Peripheral Architecture, it is better to make sure that is is having some sort of biological plausibility. Example: If I want to define a human fovea to have a value ranging between 1-2 degrees (as constrainted biologically), then I would like that the fovea occupies a reasonable size in pixel space. This will make more sense when we cover the basics of degrees of visual angle.
+* If creating a Peripheral Architecture, it is better to make sure that is is having some sort of biological plausibility. Example: If I want to define a human fovea to have a value ranging between 1-2 degrees (as constrainted biologically), then I would like that the fovea occupies a reasonable size in pixel space. This will make more sense when we cover the basics of degrees of visual angle.
 
 ## Define your Human (Viewing Distance) parameters:
 
