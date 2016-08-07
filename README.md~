@@ -14,6 +14,9 @@ A peripheral architecture is a collection of regions that simulate human-like po
 2) Define your viewing parameters.
 
 # Create a Piranha
+```
+$ python create_Piranha.py
+```
 
 ## Define your Computer parameters:
 

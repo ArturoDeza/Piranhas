@@ -117,3 +117,7 @@ Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
 Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
 
+
+# Credits
+Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
+Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the VIU-Lab @ UCSB.
