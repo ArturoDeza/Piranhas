@@ -129,7 +129,7 @@ Here is a list of Vision Science papers that have foveal/peripheral-like mechani
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
-Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the VIU-Lab @ UCSB.
+Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the [VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm){:target="_blank"}.
 
 If you found this code useful for your research, please cite:
 ```
