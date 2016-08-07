@@ -90,6 +90,10 @@ A: No. Unless you are rigorously comparing human and machine fixations and you w
 * Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
 * Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
 * Cichy RM, Khosla A, Pantazis D, Torralba A, Oliva A (2016). Comparison of deep neural networks to spatio-temporal cortical dynamics of human visual object recognition reveals hierarchical correspondence SciReports, 6:27755. doi: 10.1038/srep27755.
+* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, ArXiv 2016.
+* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014.
+
+Do you have a paper at the intersection of more than one vision field? Let us know to expand this preliminary list!
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
