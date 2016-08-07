@@ -10,9 +10,11 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 # Creating Peripheral Architectures
 
-1) Download our toolbox to create Peripheral Architectures at your convenience in MATLAB, python or Torch.
-2) Define your Computer + Human perception parameters.
-3) Create a Peripheral Architecture
+1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in MATLAB, python or Torch.
+
+2. Define your Computer + Human perception parameters.
+
+3. Create a Peripheral Architecture
 
 ## Define your Computer parameters:
 
@@ -28,6 +30,7 @@ mon_height = 30 # in cm
 These parameters are useful to put in for two main reasons: 
 1. If you are performing EyeTracking experiments and/or psychophysics, then you can then
 calculate equivalent image/target appearance in terms of d.v.a. (degrees of visual angle). 
+
 2. If creating a Peripheral Architecture,
 it is better to make sure that is is having some sort of biological plausibility. Example: If I want to define a human fovea to have a value ranging between 1-2 degrees (as constrainted biologically), then I would like that the fovea occupies a reasonable size in pixel space. This will make more sense when we cover the basics of degrees of visual angle.
 
@@ -46,7 +49,7 @@ In our study (Deza & Eckstein, 2016) the deg_per_pixel is 0.022 for our EyeTrack
 our peripheral architecture is 0.042 (twice the size, and computed with the values scenes in the example above).
 
 Increasing the `deg_per_pixel` rate in a simulation has its advantages, mainly the fact that we can now downsample or resize our image input image,
-to preserve the total input space in the degrees space. It is easy to see that if an image is viewd at `X_deg` by `Y_deg` degrees of visual angle, then 
+to preserve the input information in the degrees space. It is easy to see that if an image is viewd at `X_deg` by `Y_deg` degrees of visual angle, then 
 
 	X_deg = x_pixels * deg_per_pixel (on a monitor) and Y_deg = y_pixels * deg_per_pixel (on a monitor)
 
@@ -75,7 +78,7 @@ $ python create_Piranha.py
 
 ## [FAQ]: Frequenty Asked Questions:
 
-### Q: It seems like there are many possible settings to create a `deg_per_pixel rate`, which ones do I pick?
+### Q: It seems like there are many possible settings to create a `deg_per_pixel` rate, which ones do I pick?
 
 A: In general there will be some contraints that are inmutable such as the dimensions of the monitor you are using, such as the monitor width and height of the visible area. Another semi-flexible constraint can be viewing distance in the EyeTracker. It is a general norm to have the monitor between 50 to up to 80 cm of viewing distance. You can play with these parameters. Other free parameters include monitor resolution (however these are discrete values contingent on quality of monitors: 800x600, or 1280x1024 are classic settings). In radiology monitors of about
 the same physical dimensions can go up to: 2096x2800. These are commonly called 5 Megapixel resolution monitors. As a good rule of thumb, creating
