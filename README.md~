@@ -117,3 +117,23 @@ Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
 Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
 
+
+# Credits & Citation
+Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
+Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the VIU-Lab @ UCSB.
+
+If you found this code useful for your research, please cite:
+```
+@misc{Deza2016,
+author = {Deza, Arturo and Abkas, Emre and Jonalaggadda, Aditya and Rosedahl, Luke and Lago, Miguel and Eckstein, Miguel},
+title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
+year = {2016},
+publisher = {GitHub},
+journal = {GitHub repository},
+howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
+}
+```
+
+### Papers that use Piranhas Toolkit
+* "Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?" by Arturo Deza & Miguel Eckstein, ArXiv 2016.
+* "Object Detection Through Exploration With A Foveated Visual Field" by Emre Akbas & Miguel Eckstein, ArXiv 2014.
