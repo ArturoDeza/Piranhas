@@ -84,15 +84,16 @@ the same physical dimensions can go up to: 2096x2800. These are commonly called 
 
 A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor are:
 
-* Pramod, R. T., and S. P. Arun. "Do computational models differ systematically from human object perception?." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016.
+* Agrawal, Pulkit, et al. "Pixels to voxels: modeling visual representation in the human brain." arXiv preprint arXiv:1407.5104 (2014).
 * Aminoff, Elissa M., et al. "Applying artificial vision models to human scene understanding." Frontiers in computational neuroscience 9 (2015).
+* Pramod, R. T., and S. P. Arun. "Do computational models differ systematically from human object perception?." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016.
 * Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
 Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo).
 
-### Q: I do Deep Learning, what can I get out of Piranhas toolkit?
+### Q: I do Deep Learning, what can I (get out of) / (do for)  Piranhas toolkit?
 
 Deep Learning has begun embracing a strong trend in mimicking neuroscience-like mechanisms in their algorithms. Beginning by Perceptrons with Neurons, hierarchical structure of V1, V2, V4, and IT with Deep Networks with CNN's, and RNN's + LSTM's with Overt Attention Mechanisms.
 While there is still much more work to be done in Deep Learning, and we are far from understanding intelligence there have been remarkable successes
@@ -102,20 +103,24 @@ We believe that one of the main unexplored areas in Computer Vision and Deep Lea
 
 Here is a list of Deep Learning papers that have foveal/peripheral-like mechanisms:
 
-### Q: I do Computer Vision, what can I get out of Piranhas toolkit?
+### Q: I do Computer Vision, what can I (get out of) / (do for) Piranhas toolkit?
 
 One of the main goals in Computer Vision is give the gift of sight to computers i.e. produce human-like levels of performance in ILSVRC and on image datasets like MNIST,LabelMe, SUN, ImageNet, and MSCOCO. While it is debatable if computers should in fact have the same (artificial) visual perception algorithms as humans, we think that the use of experimenting with clevelrly designed peripheral architectures opens a realm of possibilities for future solutions and new problems in the field of computer vision. 
 
 Here is a list of Computer Vision papers that have foveal/peripheral-like mechanisms:
 
-### Q: I do Robotics, what can I get out of Piranhas toolkit?
+And other papers from other fields that might be of your interest:
+* Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
+
+### Q: I do Robotics, what can I (get out of) / (do for) Piranhas toolkit?
 
 Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is current hot topic, and adding peripheral constraints similar to 
 an animals eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you know an eagle has two foveas?
 
 Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
 
-### Q: I do Vision Science, what can I get out of Piranhas toolkit?
+
+### Q: I do Vision Science, what can I (get out of) / (do for) Piranhas toolkit?
 
 
 
@@ -124,12 +129,12 @@ Here is a list of Vision Science papers that have foveal/peripheral-like mechani
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
-Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the VIU-Lab @ UCSB.
+Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the [VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm){:target="_blank"}.
 
 If you found this code useful for your research, please cite:
 ```
 @misc{Deza2016,
-author = {Deza, Arturo and Abkas, Emre and Jonalaggadda, Aditya and Rosedahl, Luke and Lago, Miguel and Eckstein, Miguel},
+author = {Deza, Arturo and Jonalaggadda, Aditya and Rosedahl, Luke and Lago, Miguel and Abkas, Emre and Eckstein, Miguel},
 title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
 year = {2016},
 publisher = {GitHub},
