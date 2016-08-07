@@ -51,7 +51,7 @@ deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
   fovea = 1.0 # This is the approximate foveal radius.
   #scale = 0.25 # Use this for V1 receptive field size pooling regions.
   scale = 0.5 # Use this for V2 receptive field size pooling regions.
-	# See Simoncelli & Freeman, 2011 (Supplementary Material) for more information on the scale.
+  # See Simoncelli & Freeman, 2011 (Supplementary Material) for more information on the scale parameter.
 
 ```
 
