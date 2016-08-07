@@ -82,12 +82,14 @@ the same physical dimensions can go up to: 2096x2800. These are commonly called 
 
 ### Q: Should degrees of visual angle be a standard in Computer Vision?
 
-A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor are:
+A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor through experiments or discussion are:
 
 * Agrawal, Pulkit, et al. "Pixels to voxels: modeling visual representation in the human brain." arXiv preprint arXiv:1407.5104 (2014).
 * Aminoff, Elissa M., et al. "Applying artificial vision models to human scene understanding." Frontiers in computational neuroscience 9 (2015).
 * Pramod, R. T., and S. P. Arun. "Do computational models differ systematically from human object perception?." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016.
 * Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
+* Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
+* Cichy RM, Khosla A, Pantazis D, Torralba A, Oliva A (2016). Comparison of deep neural networks to spatio-temporal cortical dynamics of human visual object recognition reveals hierarchical correspondence SciReports, 6:27755. doi: 10.1038/srep27755.
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
@@ -107,22 +109,14 @@ Here is a list of Deep Learning papers that have foveal/peripheral-like mechanis
 
 One of the main goals in Computer Vision is give the gift of sight to computers i.e. produce human-like levels of performance in ILSVRC and on image datasets like MNIST,LabelMe, SUN, ImageNet, and MSCOCO. While it is debatable if computers should in fact have the same (artificial) visual perception algorithms as humans, we think that the use of experimenting with clevelrly designed peripheral architectures opens a realm of possibilities for future solutions and new problems in the field of computer vision. 
 
-Here is a list of Computer Vision papers that have foveal/peripheral-like mechanisms:
-
-And other papers from other fields that might be of your interest:
-* Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
-
 ### Q: I do Robotics, what can I (get out of) / (do for) Piranhas toolkit?
 
 Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is current hot topic, and adding peripheral constraints similar to 
 an animals eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you know an eagle has two foveas?
 
-Here is a list of Robotics papers that have foveal/peripheral-like mechanisms:
-
 
 ### Q: I do Vision Science, what can I (get out of) / (do for) Piranhas toolkit?
 
-Here is a list of Vision Science papers that have foveal/peripheral-like mechanisms:
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
