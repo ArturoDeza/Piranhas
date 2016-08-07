@@ -82,7 +82,11 @@ the same physical dimensions can go up to: 2096x2800. These are commonly called 
 
 ### Q: Should degrees of visual angle be a standard in Computer Vision?
 
-A: No.
+A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor are:
+
+* Pramod, R. T., and S. P. Arun. "Do computational models differ systematically from human object perception?." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016.
+* Aminoff, Elissa M., et al. "Applying artificial vision models to human scene understanding." Frontiers in computational neuroscience 9 (2015).
+* Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
