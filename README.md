@@ -2,8 +2,8 @@
 A Toolkit for creating Peripheral Architectures.
 
 This toolkit was implemented and used to create the peripheral architectures of the papers:
-* *Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?* Arturo Deza & Miguel Eckstein, 2016.
-* *Object Detection Through Exploration With A Foveated Visual Field* Emre Akbas & Miguel Eckstein, ArXiv 2014.
+* **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel Eckstein, 2016.
+* **_Object Detection Through Exploration With A Foveated Visual Field_**. Emre Akbas & Miguel Eckstein, ArXiv 2014.
 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
@@ -105,7 +105,7 @@ Matlab:
 ### Q: It seems like there are many possible settings to create a `deg_per_pixel` rate, which ones do I pick?
 
 A: In general there will be some contraints that are inmutable such as the dimensions of the monitor you are using, such as the monitor width and height of the visible area (screen). Another semi-flexible constraint can be viewing distance in the EyeTracker. It is a general norm to have the monitor between 50 to up to 80 cm of viewing distance. You can play with these parameters. Other free parameters include monitor resolution (however these are discrete values contingent on quality of monitors: 800x600, or 1280x1024 are classic settings). In radiology monitors of about
-the same physical dimensions can go up to: 2096x2800. These are commonly called 5 Megapixel resolution monitors, and are quite expensive. As a good rule of thumb, creating `deg_per_pixel` values that go from 0.022 up to 0.044 are pretty reasonbale to simulate in a lab environment, given common
+the same physical dimensions can go up to: 2096x2800. These are commonly called 5 Megapixel resolution monitors, and are quite expensive. As a good rule of thumb, creating `deg_per_pixel` values that go from 0.022 up to 0.044 are pretty reasonable to simulate in a lab environment, given common
 viewing distances and hardware monitor settings.
 
 ### Q: Should degrees of visual angle be a standard in Computer Vision?
