@@ -54,11 +54,6 @@ fovea = 2.0;
 scale = 0.25; %This scale is for V1
 %scale = 0.5
 
-visual_field_radius_in_deg = 10;
-fovea = 1.0;
-scale = 0.25;
-
-
 e0_in_deg = 0.25;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%

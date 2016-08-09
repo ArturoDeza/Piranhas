@@ -1,0 +1,1 @@
+function [out] = sumorients(in)%% Sums the four orientations into one image.% %%	Usage: [out] = sumorients(input_image)H = getH(in);V = getV(in);L = getL(in);R = getR(in);out = H+V+L+R;return;

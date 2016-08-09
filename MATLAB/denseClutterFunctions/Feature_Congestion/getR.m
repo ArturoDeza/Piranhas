@@ -1,0 +1,1 @@
+function [out] = getR(in)[m,n] = size(in);out = in(:,3*n/4+1:n);return;

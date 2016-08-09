@@ -1,9 +1,9 @@
 %Set Initial Parameters:
 
-function foveal_param = clutter_metamer_preamble_V2
+function foveal_param = piranha_V1
 
-% Add extra paths & Preamble:
-rng('shuffle');
+% We Create a Peripheral Architecture with pooling regions 
+% that approximate V1 receptive field size.
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Monitor Parameters %

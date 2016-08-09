@@ -1,0 +1,1 @@
+function [out] = getV(in)[m,n] = size(in);out = in(:,n/4+1:n/2);return;

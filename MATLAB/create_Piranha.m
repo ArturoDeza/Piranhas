@@ -1,9 +1,9 @@
 %Set Initial Parameters:
 
-function foveal_param = clutter_metamer_preamble_V2
+function foveal_param = create_Piranha
 
-% Add extra paths & Preamble:
-rng('shuffle');
+% We Create a Peripheral Architecture with pooling regions 
+% that approximate V1 receptive field size.
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Monitor Parameters %
@@ -53,11 +53,6 @@ fovea = 2.0;
 %scale = 0.5; %This scale is for V2
 scale = 0.25; %This scale is for V1
 %scale = 0.5
-
-visual_field_radius_in_deg = 10;
-fovea = 1.0;
-scale = 0.5;
-
 
 e0_in_deg = 0.25;
 
