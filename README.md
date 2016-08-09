@@ -1,7 +1,7 @@
 # Piranhas
 A Toolkit for creating Peripheral Architectures.
 
-![FoveatedRepresentations](/images/Total_Foveated_Cartoon.pdf)
+![FoveatedRepresentations](/images/Total_Foveated_Cartoon.png)
 
 This toolkit was implemented and used to create the peripheral architectures of the papers:
 * **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel Eckstein, ArXiv 2016.
