@@ -52,7 +52,7 @@ function param:param_init_all(o)
 end
 
 -- Ouput of functions will be regions array
-function create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e)
+function piranhas:create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e)
 
 	--e0_in_deg = 0.25
 	--e_max = 10

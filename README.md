@@ -1,7 +1,9 @@
 # Piranhas
 A Toolkit for creating Peripheral Architectures.
 
-This toolkit was implemented and used to create the peripheral architectures of the paper "Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?" by Arturo Deza & Miguel Eckstein, 2016.
+This toolkit was implemented and used to create the peripheral architectures of the papers:
+* *Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?* Arturo Deza & Miguel Eckstein, 2016.
+* *Object Detection Through Exploration With A Foveated Visual Field* Emre Akbas & Miguel Eckstein, ArXiv 2014.
 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
@@ -88,7 +90,11 @@ $ python create_Piranha.py
 ```
 
 Torch:
-
+```
+$ th create_Piranha.lua
+-- Or:
+> require 'piranhas' 
+```
 
 Matlab:
 
@@ -142,14 +148,13 @@ an animals eye may play an important role in path-planning for an agent in its e
 
 
 # Credits & Citation
-Piranhas Toolkit was mainly written by Arturo Deza, but could not have been started (or finished) without the help and guidance of Emre Akbas,
-Aditya Jonnalaggada, Miguel Angel Lago, Luke Rosedahl and Miguel Eckstein. All code was written inside the 
+Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was written inside the 
 [VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm).
 
 If you found this code useful for your research, please cite:
 ```
 @misc{Deza2016,
-author = {Deza, Arturo and Jonalaggadda, Aditya and Rosedahl, Luke and Lago, Miguel and Abkas, Emre and Eckstein, Miguel},
+author = {Deza, Arturo and Abkas, Emre and Eckstein, Miguel},
 title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
 year = {2016},
 publisher = {GitHub},

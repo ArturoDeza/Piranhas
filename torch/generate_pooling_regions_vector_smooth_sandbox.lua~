@@ -1,0 +1,83 @@
+function generate_pooling_regions_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field_radius_in_deg,fovea,e0_in_deg,visual):
+
+	e_max = visual_field_radius_in_deg
+	visual_field_width = math.floor(0.5+2*(visual_field_radius_in_deg/deg_per_pixel))
+
+	center_r = math.floor(0.5+visual_field_width/2)
+	center_c = center_r
+
+	regions = create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e)
+
+	regions2 = regions:permute(3,4,1,2)
+	-- fovea = 1.0 -- Un comment for debugging purposes
+
+	centers = torch.zeros(2,N_theta,N_e)
+	areas = torch.zeros(N_theta,N_e)
+
+	mask_matrix = torch.zeros(N_theta,N_e)
+
+	mask = torch.zeros(visual_field_width,visual_field_width)
+
+	-- Double Check this:
+	for nt=1,N_theta do
+		for ne=1,N_e do
+			
+			mask = regions[{{nt},{ne},{},{}}]
+			mask = torch.squeeze(mask)
+
+			mask_indxs = torch.nonzero(mask)
+			r = mask_indxs[{{},{1}}]
+			c = mask_indxs[{{},{2}}]
+
+			centers[{{1},{nt},{ne}}] = torch.mean(r:double())
+			centers[{{2},{nt},{ne}}] = torch.mean(c:double())
+
+			areas[{{nt},{ne}}] = r:size(1)
+
+		end
+	end
+
+	-- Define a filters class here.
+
+	-- And then do something like:
+	-- filters.regions = regions
+	-- filters.centers = centers
+	-- filters.areas = areas
+
+	Filters = { regions = torch.Tensor(N_theta,N_e,visual_field_width,visual_field_width),
+	centers = torch.Tensor(2,N_theta,N_e),
+	areas = torch.Tensor(N_theta,N_e),
+	offsets_r = {},
+	offsets_c = {},
+	weights = {},
+	uniq_pix = {},
+	}
+ 	-- Don't allocate anything here
+
+	filters = Filters
+
+	for i=1,N_theta do
+		filters.offsets_r[i] = {}
+		filters.offsets_c[i] = {}
+		filters.weights[i] = {}
+		filters.uniq_pix[i] = {}
+		for j=1,N_e do
+			filters.offsets_r[i][j] = torch.Tensor()
+			filters.offsets_c[i][j] = torch.Tensor()
+			filters.weights[i][j] = torch.Tensor()
+			filters.uniq_pix[i][j] = torch.Tensor()
+		end
+	end
+	
+
+	filters = Filters
+
+	-- We want to preserve smooth curves
+	blindspot_threshold = 0.0;
+
+	-- Initialize filters_offsets, filter weights, and 
+	center_r = math.floor(0.5+filters.regions:size(3)/2)
+	center_c = math.floor(0.5+filters.regions:size(4)/2)
+
+
+
