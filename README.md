@@ -12,13 +12,15 @@ The toolkit was originally written in MATLAB, but has been extended to python an
 # What is a Peripheral Architecture?
 A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011]. 
 
-# Creating Peripheral Architectures
+# Using Piranhas
 
 1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in MATLAB, python or Torch.
 
 2. Define your Computer + Human perception parameters.
 
 3. Create a Peripheral Architecture
+
+4. Pool your dense feature maps
 
 ## Define your Computer parameters:
 

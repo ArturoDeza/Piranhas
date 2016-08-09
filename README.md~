@@ -20,6 +20,8 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 3. Create a Peripheral Architecture
 
+4. Pool your dense feature maps
+
 ## Define your Computer parameters:
 
 In python/piranhas.py @param_init():
