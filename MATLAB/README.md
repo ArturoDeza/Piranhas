@@ -1,14 +1,14 @@
 #Piranhas [MATLAB R2012a]
 
-1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in *MATLAB*, python or Torch.
+1.Download the Piranhas toolbox to create Peripheral Architectures at your convenience in *MATLAB*, python or Torch.
 
-2. Define your Computer + Human perception parameters.
+2.Define your Computer + Human perception parameters.
 
+Fill in some stuff here!
 
+3.Create a Peripheral Architecture.
 
-3. Create a Peripheral Architecture.
-
-```
+```matlab
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create Peripheral Architecture %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,9 +37,9 @@ end
 foveal_indx = find(foveal_param_cheap.foveal_mask~=0);
 ```
 
-4. Pool your dense feature maps.
+4.Pool your dense feature maps:
 
-```
+```matlab
 img = imresize(imread('../images/1.jpg'),0.5);
 [fc_score dense_map] = getClutter_FC(img);
 
@@ -65,4 +65,7 @@ x_upper_in = [];
 foveal_map = pool_dense_map(foveal_param_cheap,dense_map,peri_indx,foveal_indx,y_coord,x_coord,visual_toggle,y_lower_in,y_upper_in,x_lower_in,x_upper_in))
 ```
 
-To pool features
+For a demo run from the MATLAB command line prompt:
+```matlab
+> pool_dense_map_demo1
+```
