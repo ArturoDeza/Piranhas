@@ -22,6 +22,8 @@ foveal_param_cheap.peripheral_filters = foveal_param.peripheral_filters;
 
 clear foveal_param;
 
+% Get Peripheral and Foveal masks
+
 for i=1:length(foveal_param_cheap.select_mask_stream)
 	peri_indx{i} = find(foveal_param_cheap.select_mask_stream{i}~=0);
 end
