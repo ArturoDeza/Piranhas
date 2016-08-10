@@ -36,40 +36,39 @@ Fill in some stuff here!
 
 	foveal_indx = find(foveal_param_cheap.foveal_mask~=0);
 	```
-
 4. Pool your dense feature maps:
 
-```matlab
+	```matlab
 
-% For this demo we are loading an image and then computing Feature Congestion.
-% You can directly load any type of dense map as well.
+	% For this demo we are loading an image and then computing Feature Congestion.
+	% You can directly load any type of dense map as well.
 
-img = imresize(imread('../images/1.jpg'),0.5);
-[fc_score dense_map] = getClutter_FC(img);
+	img = imresize(imread('../images/1.jpg'),0.5);
+	[fc_score dense_map] = getClutter_FC(img);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Run pool_dense_map function %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Run pool_dense_map function %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-[size_map_h size_map_w] = size(dense_map);
+	[size_map_h size_map_w] = size(dense_map);
 
-% Assume a center fixation for now, you can change this with any fixation point.
+	% Assume a center fixation for now, you can change this with any fixation point.
 
-y_coord = round(size_map_h/2);
-x_coord = round(size_map_w/2);
+	y_coord = round(size_map_h/2);
+	x_coord = round(size_map_w/2);
 
-visual_toggle = 0;
+	visual_toggle = 0;
 
-% NaN padding?
-y_lower_in = [];
-y_upper_in = [];
-x_lower_in = [];
-x_upper_in = [];
+	% NaN padding?
+	y_lower_in = [];
+	y_upper_in = [];
+	x_lower_in = [];
+	x_upper_in = [];
 
-foveal_map = pool_dense_map(foveal_param_cheap,dense_map,peri_indx,foveal_indx,y_coord,x_coord,visual_toggle,y_lower_in,y_upper_in,x_lower_in,x_upper_in))
-```
-
+	foveal_map = pool_dense_map(foveal_param_cheap,dense_map,peri_indx,foveal_indx,y_coord,x_coord,visual_toggle,y_lower_in,y_upper_in,x_lower_in,x_upper_in))
+	```
 5. For a demo run from the MATLAB command line prompt:
-```matlab
-> pool_dense_map_demo1
-```
+
+	```matlab
+	> pool_dense_map_demo1
+	```

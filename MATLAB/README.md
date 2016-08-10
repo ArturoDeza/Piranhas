@@ -1,13 +1,9 @@
 #Piranhas [MATLAB R2012a]
 
 1. Download the Piranhas toolbox for MATLAB.
-
 2. Define your Computer + Human perception parameters.
-
 Fill in some stuff here!
-
 3. Create a Peripheral Architecture.
-
 	```matlab
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Create Peripheral Architecture %
