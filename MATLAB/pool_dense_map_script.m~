@@ -1,5 +1,8 @@
 clc;close all;clear all;
 
+addpath(genpath('./denseClutterFunctions/matlabPyrTools/'));
+addpath(genpath('./denseClutterFunctions/Feature_Congestion/'));
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create Peripheral Architecture %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,8 +34,11 @@ foveal_indx = find(foveal_param_cheap.foveal_mask~=0);
 
 % Insert code/function to compute or load a dense map here.
 
-dense_map = load('../images/1.mat');
-dense_map = dense_map.ProtoTotal;
+%dense_map = load('../images/1.mat');
+%dense_map = dense_map.ProtoTotal;
+
+img = imresize(imread('../images/1.jpg'),0.5);
+[fc_score dense_map] = getClutter_FC(img);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Run pool_dense_map function %
@@ -45,7 +51,7 @@ dense_map = dense_map.ProtoTotal;
 y_coord = round(size_map_h/2);
 x_coord = round(size_map_w/2);
 
-visual_toggle = 1;
+visual_toggle = 0;
 
 y_lower_in = [];
 y_upper_in = [];

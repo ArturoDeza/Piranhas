@@ -1,7 +1,7 @@
 clc;close all;clear all;
 
-addpath(genpath('./denseClutterFunctions/matlabPyrTools/'));
-addpath(genpath('./denseClutterFunctions/Feature_Congestion/'));
+addpath('./denseClutterFunctions/matlabPyrTools/');
+addpath('./denseClutterFunctions/Feature_Congestion/');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create Peripheral Architecture %
@@ -21,8 +21,6 @@ foveal_param_cheap.monitor = foveal_param.monitor;
 foveal_param_cheap.peripheral_filters = foveal_param.peripheral_filters;
 
 clear foveal_param;
-
-% Get Peripheral and Foveal masks
 
 for i=1:length(foveal_param_cheap.select_mask_stream)
 	peri_indx{i} = find(foveal_param_cheap.select_mask_stream{i}~=0);
