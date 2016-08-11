@@ -7,48 +7,57 @@ import matplotlib.pyplot as plt
 # foveal_param
 
 def param_init_all():
-  
-  class param_init(object):
-    pixel_res_width = 800 # in pixels
-    pixel_res_height = 600 # in pixels
-    mon_width = 37.5 # in cm
-    mon_height = 30 # in cm
-    view_dist = 64 # in cm
-    gamma_c = 1 # gabor parameter
-    psi_c = 0 # gabor parameter
-    
-    cm_per_pixel = mon_width/pixel_res_width;
-    deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
-    
-    ###########################
-    # Gabor filter parameters #
-    ###########################
-    
-    orien = 8
-    wave_num = 3
-    freq_zero = 1.0
-    bandwidth = 1 
-    
-    ##################################
-    # Field of View Model Parameters #
-    ##################################
-    
-    visual_field_radius_in_deg = 10
-    fovea = 1.0
-    scale = 0.5
-    e0_in_deg = 0.25
-    
-    visual_field_radius_in_deg = 10 # This is the total visual field_radius in deg
-    fovea = 1.0 # This is the approximate foveal radius.
-    #scale = 0.25 # This is for V1s
-    scale = 0.5 # This is for V2.
-    
-    visual = 1
-    visual_mask = 1
-    
-  param = param_init()
-    
-  return param
+
+	class param_init(object):
+		monitor = monitor_init_all()
+
+		pixel_res_width = 800 # in pixels
+		pixel_res_height = 600 # in pixels
+		mon_width = 37.5 # in cm
+		mon_height = 30 # in cm
+		view_dist = 64 # in cm
+		gamma_c = 1 # gabor parameter
+		psi_c = 0 # gabor parameter
+
+		# Try coding here a 'monitor' constructor
+		monitor.pixel_res_width = pixel_res_width
+		monitor.pixel_res_height = pixel_res_height
+		monitor.mon_height = mon_height
+		monitor.mon_width = mon_width
+		monitor.view_dist = view_dist
+
+		cm_per_pixel = mon_width/pixel_res_width
+		deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
+
+		###########################
+		# Gabor filter parameters #
+		###########################
+
+		orien = 8
+		wave_num = 3
+		freq_zero = 1.0
+		bandwidth = 1 
+
+		##################################
+		# Field of View Model Parameters #
+		##################################
+
+		visual_field_radius_in_deg = 10
+		fovea = 1.0
+		scale = 0.5
+		e0_in_deg = 0.25
+
+		visual_field_radius_in_deg = 10 # This is the total visual field_radius in deg
+		fovea = 1.0 # This is the approximate foveal radius.
+		#scale = 0.25 # This is for V1s
+		scale = 0.5 # This is for V2.
+
+		visual = 1
+		visual_mask = 1
+
+	param = param_init()
+	return param
+
 
 # Define Foveal Param class:
 def foveal_param_init_all():
@@ -72,9 +81,9 @@ def foveal_param_init_all():
 		deg_per_pixel = None
 
 		monitor = monitor_init_all()
-
+		
 	foveal_param = foveal_param_init()
-	return foveal_param_init()
+	return foveal_param
 
 
 def monitor_init_all():

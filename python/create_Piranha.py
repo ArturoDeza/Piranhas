@@ -2,7 +2,7 @@
 # Developed by Arturo Deza as part of the Piranhas Toolkit
 # Questions & bugs: deza @ dyns.ucsb.edu
 
-from numpy import np
+import numpy as np
 from piranhas import *
 
 import math
@@ -97,6 +97,8 @@ for i in range(0,peri_width):
 
 # To do.
 # We have to add the gabor filter bank here.
+
+visual_mask = 0
 
 ####################################
 # Create list of Foveal_parameters #
