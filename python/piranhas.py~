@@ -50,6 +50,50 @@ def param_init_all():
     
   return param
 
+# Define Foveal Param class:
+def foveal_param_init_all():
+	
+	class foveal_param_init(object):
+		N_theta = None
+		N_e = None
+		peri_height = None
+		peri_width = None
+		
+		select_mask_stream = None #cell
+		select_mask_label = None #cell
+		foveal_mask = None
+		foveal_radius_px = None
+		foveal_radius_deg = None
+
+		peripheral_filters = None #cell
+
+		visual_mask = None
+
+		deg_per_pixel = None
+
+		monitor = monitor_init_all()
+
+	foveal_param = foveal_param_init()
+	return foveal_param_init()
+
+
+def monitor_init_all():
+	class monitor_init(object):
+ 
+		# check pixel resolution of the computer where
+		# phsychophysics will be used.
+		pixel_res_width = None
+		pixel_res_height = None
+		
+		# specify these values in cm of the visible
+		# screen area of the monitor
+		mon_width = None
+		mon_height = None 
+		view_dist = None
+	
+	monitor = monitor_init()
+	return monitor
+	
 ###########################################
 # Compute Eccentricity + Theta parameters #
 ###########################################
@@ -463,8 +507,6 @@ def generate_pooling_regios_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field
 	peripheral_filters.regions = peripheral_filters.regions[:,n_e_limit:,:,:]
 	peripheral_filters.centers = peripheral_filters.centers[:,:,n_e_limit:]
 	peripheral_filters.areas = peripheral_filters.areas[:,n_e_limit:]
-
-	# Everything till here is good (vs MATLAB vesion).
 
 	# Have to do this since python 2.7 doesn't support MultiDimensional List Slicing
 	# If someone has a workaround go for it.

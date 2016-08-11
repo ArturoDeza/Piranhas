@@ -104,6 +104,28 @@ for i in range(0,peri_width):
 
 foveal_param = foveal_param_init_all()
 
-foveal_param.N_theta = N_theta
-foveal_param.N_e = N_e
+foveal_param.N_theta = N_theta;
+foveal_param.N_e = N_e;
+#foveal_param.wave_num = wave_num;
+#foveal_param.orien = orien;
+foveal_param.peri_height = peri_height;
+foveal_param.peri_width = peri_width;
 
+foveal_param.select_mask_stream = select_mask_stream;
+foveal_param.select_mask_label = select_mask_label;
+foveal_param.foveal_mask = foveal_mask;
+foveal_param.foveal_radius_px = foveal_radius_px;
+foveal_param.foveal_radius_deg = foveal_radius_deg;
+#foveal_param.filter_bank = filter_bank;
+#foveal_param.filter_bank_stream = filter_bank_stream;
+foveal_param.peripheral_filters = peripheral_filters;
+
+foveal_param.visual_mask = visual_mask;
+
+foveal_param.deg_per_pixel = deg_per_pixel;
+
+foveal_param.monitor.pixel_res_width = param.pixel_res_width;
+foveal_param.monitor.pixel_res_height = param.pixel_res_height;
+foveal_param.monitor.mon_width = param.mon_width;
+foveal_param.monitor.mon_height = param.mon_height;
+foveal_param.monitor.view_dist = param.view_dist;
