@@ -28,8 +28,13 @@
 3. Create a Peripheral Architecture.
 
 	```python
-	python -i create_Piranhas.py
+	python -i create_Piranha.py
 	```
 4. Pool your dense feature maps:
 
+
+
 5. For a demo run from the MATLAB command line prompt:
+
+### Tips and tricks:
+Save your peripheral architectures in the pirArch folder!

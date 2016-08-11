@@ -115,6 +115,8 @@ class foveal_param:
 	visual_mask = 0
 	deg_per_pixel = None
 
+	monitor_settings = None
+
 
 	# All of these parameters will be passed after the initial params are defined and computed
 	def __init__(self,monitor_input,N_theta,N_e,peri_height,peri_width,select_mask_stream,select_mask_label,foveal_mask,foveal_radius_px,foveal_radius_deg):
@@ -397,7 +399,7 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 # inside the foveal radius.                      #
 ##################################################
 
-def generate_pooling_regios_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field_radius_in_deg,fovea,e0_in_deg,visual):
+def generate_pooling_regions_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field_radius_in_deg,fovea,e0_in_deg,visual):
 
 	e_max = visual_field_radius_in_deg
 	visual_field_width = round(2*(visual_field_radius_in_deg/deg_per_pixel))

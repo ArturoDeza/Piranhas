@@ -103,16 +103,16 @@ foveal_input.N_e = N_e
 foveal_input.peri_height = peri_height
 foveal_input.peri_width = peri_width
 
-# Get Peripheral + Fovela masks
+#Get Peripheral + Fovela masks
 foveal_input.select_mask_stream = select_mask_stream
 foveal_input.select_mask_label = select_mask_label
 foveal_input.foveal_mask = foveal_mask
-
-# Copy values from before:
 foveal_input.foveal_radius_px = foveal_radius_px
 foveal_input.foveal_radius_deg = foveal_radius_deg
 foveal_input.peripheral_filters = peripheral_filters
+
 foveal_input.visual_mask = human_input.visual_mask
+
 foveal_input.deg_per_pixel = human_input.deg_per_pixel
 
 foveal_input.monitor_settings.pixel_res_width = computer_input.pixel_res_width
