@@ -157,7 +157,7 @@ Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was
 
 If you found this code useful for your research, please cite:
 ```
-@misc{Deza2016,
+@misc{Deza2016piranhas,
 author = {Deza, Arturo and Abkas, Emre and Eckstein, Miguel P.},
 title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
 year = {2016},
