@@ -14,6 +14,7 @@ A peripheral architecture is a collection of regions that simulate human-like po
 
 <p align="center">
 ![Observer1](/images/ADS_total.gif) ![Observer2](/images/PC_total.gif)
+<img src='/images/ADS_total.gif'><img src='/images/PC_total.gif'>
 </p>
 
 # Using Piranhas
