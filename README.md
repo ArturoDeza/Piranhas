@@ -12,8 +12,8 @@ The toolkit was originally written in MATLAB, but has been extended to python an
 # What is a Peripheral Architecture?
 A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011].
 
-![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer2](http://imgur.com/SL0WTgH.gif)
-![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer2](http://imgur.com/SL0WTgH.gif)
+![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer3](http://imgur.com/SL0WTgH.gif)
+![Observer4](http://imgur.com/uhw8Lq3.gif) ![Observer5](http://imgur.com/SL0WTgH.gif) ![Observer6](http://imgur.com/SL0WTgH.gif)
 
 # Using Piranhas
 
@@ -171,5 +171,7 @@ howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
 ```
 
 ### Papers that use Piranhas Toolkit
-* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, ArXiv 2016.
-* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014.
+* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, NIPS 2016.
+* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014 (under review).
+
+Piranhas is released under the [BSD3-license](https://github.com/ArturoDeza/Piranhas/blob/master/license.txt).
