@@ -10,11 +10,12 @@ This toolkit was implemented and used to create the peripheral architectures of 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
 # What is a Peripheral Architecture?
-A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011]. 
+A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011].
+
+![Observer1](/images/ADS_total.gif) ![Observer2](/images/PC_total.gif)
 
 <p align="center">
-![Observer1](/images/ADS_total.gif) ![Observer2](/images/PC_total.gif)
-<img src='/images/ADS_total.gif'><img src='/images/PC_total.gif'>
+<img src='/images/ADS_total.gif'> <img src='/images/PC_total.gif'>
 </p>
 
 # Using Piranhas
