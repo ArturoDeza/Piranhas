@@ -4,8 +4,8 @@ A Toolkit for creating Peripheral Architectures.
 ![FoveatedRepresentations](/images/Total_Foveated_Cartoon.png)
 
 This toolkit was implemented and used to create the peripheral architectures of the papers:
-* **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel Eckstein, NIPS 2016.
-* **_Object Detection Through Exploration With A Foveated Visual Field_**. Emre Akbas & Miguel Eckstein, ArXiv 2014 (under review).
+* **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel P. Eckstein, NIPS 2016.
+* **_Object Detection Through Exploration With A Foveated Visual Field_**. Emre Akbas & Miguel P. Eckstein, ArXiv 2014 (under review).
 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
@@ -106,7 +106,6 @@ $ th create_Piranha.lua
 Matlab:
 
 
-
 ## [FAQ]: Frequenty Asked Questions:
 
 ### Q: It seems like there are many possible settings to create a `deg_per_pixel` rate, which ones do I pick?
@@ -117,7 +116,7 @@ viewing distances and hardware monitor settings.
 
 ### Q: Should degrees of visual angle be a standard in Computer Vision?
 
-A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor through experiments or discussion are:
+A: No. Unless you are rigorously comparing human and machine fixations and you want to have a common space to compare human psychophysics with machine classification/detection performance. Some papers that have a mixed human + computer perception flavor, be it through experiments or discussion are:
 
 * Agrawal, Pulkit, et al. "Pixels to voxels: modeling visual representation in the human brain." arXiv preprint arXiv:1407.5104 (2014).
 * Aminoff, Elissa M., et al. "Applying artificial vision models to human scene understanding." Frontiers in computational neuroscience 9 (2015).
@@ -125,8 +124,8 @@ A: No. Unless you are rigorously comparing human and machine fixations and you w
 * Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
 * Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
 * Cichy RM, Khosla A, Pantazis D, Torralba A, Oliva A (2016). Comparison of deep neural networks to spatio-temporal cortical dynamics of human visual object recognition reveals hierarchical correspondence SciReports, 6:27755. doi: 10.1038/srep27755.
-* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, ArXiv 2016.
-* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014.
+* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, NIPS 2016.
+* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, (under review).
 
 Do you have a paper at the intersection of more than one vision field? Let us know to expand this preliminary list!
 
@@ -148,11 +147,8 @@ One of the main goals in Computer Vision is give the gift of sight to computers 
 
 ### Q: I do Robotics, what can I (get out of) / (do for) Piranhas toolkit?
 
-Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is current hot topic, and adding peripheral constraints similar to 
+Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is a current hot topic, and adding peripheral constraints similar to 
 an animals eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you know an eagle has two foveas?
-
-### Q: I do Vision Science, what can I (get out of) / (do for) Piranhas toolkit?
-
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was written inside the 
