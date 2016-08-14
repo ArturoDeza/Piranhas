@@ -175,3 +175,5 @@ howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
 * Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014 (under review).
 
 Piranhas is released under the [BSD3-license](https://github.com/ArturoDeza/Piranhas/blob/master/license.txt).
+
+README.md file written by Arturo Deza.
