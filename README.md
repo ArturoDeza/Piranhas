@@ -91,20 +91,19 @@ Here is an example of how degrees of visual angle are calculated, this is a stan
 
 ## Create a Peripheral Architecture
 
-Python:
+[Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB)
+
+[Python](https://github.com/ArturoDeza/Piranhas/tree/master/python):
 ```
 $ python create_Piranha.py
 ```
 
-Torch:
+[Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch):
 ```
 $ th create_Piranha.lua
 -- Or:
 > require 'piranhas' 
 ```
-
-Matlab:
-
 
 ## [FAQ]: Frequenty Asked Questions:
 
