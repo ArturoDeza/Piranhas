@@ -76,7 +76,7 @@ Courtesy of  www.webexhibits.org
 
 [Python](https://github.com/ArturoDeza/Piranhas/tree/master/python):
 ```
-$ python create_Piranha.py
+$ python -i create_Piranha.py
 ```
 
 [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch):
@@ -86,7 +86,7 @@ $ th create_Piranha.lua
 > require 'piranhas' 
 ```
 
-## Download Peripheral Architectures from Piranhas School:
+## Download precomputed Peripheral Architectures from Piranhas School:
 
 Feature coming soon!
 
