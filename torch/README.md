@@ -64,6 +64,10 @@
 	regions = create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e)
 	```
 
+	You should see something like this:
+	
+	![PirArchTorch](http://imgur.com/jrRS30o.png)
+
 4. Pool your dense feature maps.
 
 	Coming soon!
@@ -71,6 +75,7 @@
 5. For a demo run the script in Step 3 or
 	```lua
 	th> create_Piranhas.lua
+
 
 ### Tips and tricks:
 Save your peripheral architectures in a folder!
