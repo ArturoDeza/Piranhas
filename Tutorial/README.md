@@ -60,7 +60,7 @@ or
 
 Drawing courtesy of [Katie Koelher](http://koehler.moonfruit.com/home/4580555573)
 
-Here is an example of how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
+Above is a sketch that shows how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
 
 Here is a diagram of the human retina and an illustration of how sensor density decreases as a function of eccentricity:
 
@@ -92,7 +92,7 @@ Feature coming soon!
 
 ### Q: It seems like there are many possible settings to create a `deg_per_pixel` rate, which ones do I pick?
 
-A: In general there will be some contraints that are inmutable such as the dimensions of the monitor you are using, such as the monitor width and height of the visible area (screen). Another semi-flexible constraint can be viewing distance in the EyeTracker. It is a general norm to have the monitor between 50 to up to 80 cm of viewing distance. You can play with these parameters. Other free parameters include monitor resolution (however these are discrete values contingent on quality of monitors: 800x600, or 1280x1024 are classic settings). In radiology monitors of about
+A: In general there will be some contraints that are immutable such as the dimensions of the monitor you are using, such as the monitor width and height of the visible area (screen). Another semi-flexible constraint can be viewing distance in the EyeTracker. It is a general norm to have the monitor between 50 to up to 80 cm of viewing distance. You can play with these parameters. Other free parameters include monitor resolution (however these are discrete values contingent on quality of monitors: 800x600, or 1280x1024 are classic settings). In radiology monitors of about
 the same physical dimensions can go up to: 2096x2800. These are commonly called 5 Megapixel resolution monitors, and are quite expensive. As a good rule of thumb, creating `deg_per_pixel` values that go from 0.022 up to 0.044 are pretty reasonable to simulate in a lab environment, given common
-viewing distances and hardware monitor settings.
+viewing distances and hardware monitor settings. In computer vision, you could in practice pick any `deg_per_pixel` value -- you should only worry about this if you are planning on benchmarking your model with real human observers (to then find suitable conditions for an eye tracking experiments).
 
