@@ -1,6 +1,10 @@
 local piranhas = {}
 
+-- Written by Arturo Deza, 2016.
 -- set everything to zero at beginning before initialization
+-- Still have to configure an init.lua file.
+-- That seems the right way to do it. 
+-- Will update it for next release.
 
 param = {pixel_res_width=0,
 pixel_res_height = 0,
@@ -27,13 +31,13 @@ function param:param_init_all(o)
 	o = o or {}
 	setmetatable(o, self)
 	self.__index = self
+	-- Computer parameters:
 	self.pixel_res_width = 800 -- in pixels
 	self.pixel_res_height = 800 -- in pixels
 	self.mon_width = 37.5 -- in cm
 	self.mon_height = 30 -- in cm
 	self.view_dist = 64 -- in cm
-	self.gamma_c = 1 -- gabor parameter
-	self.psi_c = 0 -- gabor parameter
+	-- Computed from above:
 	self.cm_per_pixel = (self.mon_width)/(self.pixel_res_width)
 	self.deg_per_pixel = 2*math.deg(math.atan(self.cm_per_pixel/2/self.view_dist))
 	-- Gabor Filter parameters
@@ -41,11 +45,16 @@ function param:param_init_all(o)
 	self.wave_num = 3
 	self.freq_zero = 1.0
 	self.bandwidth = 1.0
-	-- Field of View Model Parameters
+	self.gamma_c = 1 -- gabor parameter
+	self.psi_c = 0 -- gabor parameter
+	-- Human parameters:
+	-- Field of View Model Parameters:
 	self.visual_field_radius_in_deg = 10.0
 	self.fovea = 1.0
 	self.scale = 0.5
+	-- e_0 set to 0.25
 	self.e0_in_deg = 0.25
+	-- visualization toggles
 	self.visual = 1
 	self.visual_mask = 1
 	return o
@@ -104,21 +113,21 @@ function create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per
 	arg_h = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
 	h_vec = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
 
-	for j=1,N_theta do
+	-- Trying to tie MATLAB implementation:
+	for j=0,N_theta-1 do
 		for i=1,visual_field_width + 1 + visual_field_width do
+			arg_h[j+1][i] = (((i-1)*1.0/visual_field_width)*2*math.pi - ((w_theta*j)+(w_theta)*(1-t)/2))/w_theta
 
-			arg_h[j][i] = (((i-1)*1.0/visual_field_width)*2*math.pi - ((w_theta*(j-1))+(w_theta*(1-t)/2)))/w_theta
-
-			if (arg_h[j][i]<-0.75) then
-				h_vec[j][i] = 0
-			elseif (arg_h[j][i]>=-0.75) and (arg_h[j][i]<-0.25) then
-				h_vec[j][i] = math.cos((math.pi/2)*((arg_h[j][i]+0.25)*2))^2
-			elseif (arg_h[j][i]>=-0.25) and (arg_h[j][i]<0.25) then
-				h_vec[j][i] = 1
-			elseif (arg_h[j][i]>=0.25) and (arg_h[j][i]<0.75) then
-				h_vec[j][i] = 1 - (math.cos((math.pi/2)*((arg_h[j][i]-0.75)*2)))^2 
-			elseif (arg_h[j][i]>0.75) then
-				h_vec[j][i] = 0
+			if (arg_h[j+1][i]<-0.75) then
+				h_vec[j+1][i] = 0
+			elseif (arg_h[j+1][i]>=-0.75) and (arg_h[j+1][i]<-0.25) then
+				h_vec[j+1][i] = math.cos((math.pi/2)*((arg_h[j+1][i]+0.25)*2))^2
+			elseif (arg_h[j+1][i]>=-0.25) and (arg_h[j+1][i]<0.25) then
+				h_vec[j+1][i] = 1
+			elseif (arg_h[j+1][i]>=0.25) and (arg_h[j+1][i]<0.75) then
+				h_vec[j+1][i] = 1 - (math.cos((math.pi/2)*((arg_h[j+1][i]-0.75)*2)))^2 
+			elseif (arg_h[j+1][i]>0.75) then
+				h_vec[j+1][i] = 0
 			end
 		end
 	end
@@ -145,21 +154,24 @@ function create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per
 	arg_g = torch.zeros(N_ecc,visual_field_width+1+visual_field_width)
 	g_vec = torch.zeros(N_ecc,visual_field_width+1+visual_field_width)
 
-	for j=1,N_ecc do
-		for i=1,visual_field_width+1+visual_field_width do
-
-			arg_g[j][i] = (math.log((i-1+0.00001)*e_r/(visual_field_width*math.sqrt(2))) - (math.log(e_0)+w_ecc*(j)))/w_ecc
-
-			if arg_g[j][i] < -0.75 then
-				g_vec[j][i] = 0
-			elseif arg_g[j][i] >=0 -0.75 and arg_g[j][i]<-0.25 then
-				g_vec[j][i] = (math.cos((math.pi/2)*((arg_g[j][i]+0.25)*2)))^2
-			elseif arg_g[j][i] >= -0.25 and arg_g[j][i] < 0.25 then
-				g_vec[j][i] = 1
-			elseif arg_g[j][i] >= 0.25 and arg_g[j][i] < 0.75 then
-				g_vec[j][i] = 1 - (math.cos((math.pi/2)*((arg_g[j][i]-0.75)*2)))^2
-			elseif arg_g[j][i] >= 0.75 then
-				g_vec[j][i] = 0
+	-- Trying to match MATLAB version
+	for	j=0,N_ecc-1 do
+		for i=1,visual_field_width + 1 + visual_field_width do
+			-- The extra math.sqrt(2) is something you can play with depending if you want your FoV to be diagonal or horizontal.
+			-- Controlling this is critical if you wish to tile/overflow the entire visual field (have no holes)
+			--arg_g[j+1][i] = (math.log((i-1)*e_r/(visual_field_width*math.sqrt(2))) - (math.log(e_0)+w_ecc*(j+1)))/w_ecc
+			arg_g[j+1][i] = (math.log((i-1)*e_r/(visual_field_width)) - (math.log(e_0)+w_ecc*(j+1)))/w_ecc
+	
+			if arg_g[j+1][i] < -0.75 then
+				g_vec[j+1][i] = 0
+			elseif arg_g[j+1][i] >=0 -0.75 and arg_g[j+1][i]<-0.25 then
+				g_vec[j+1][i] = (math.cos((math.pi/2)*((arg_g[j+1][i]+0.25)*2)))^2
+			elseif arg_g[j+1][i] >= -0.25 and arg_g[j+1][i] < 0.25 then
+				g_vec[j+1][i] = 1
+			elseif arg_g[j+1][i] >= 0.25 and arg_g[j+1][i] < 0.75 then
+				g_vec[j+1][i] = 1 - (math.cos((math.pi/2)*((arg_g[j+1][i]-0.75)*2)))^2
+			elseif arg_g[j+1][i] >= 0.75 then
+				g_vec[j+1][i] = 0
 			end
 
 		end
