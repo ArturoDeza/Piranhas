@@ -32,9 +32,11 @@
 	```
 4. Pool your dense feature maps:
 
+	Coming Soon!
 
+5. For a demo run from the terminal line prompt:
 
-5. For a demo run from the MATLAB command line prompt:
+	Please see steps 1-3.
 
 ### Tips and tricks:
-Save your peripheral architectures in the pirArch folder!
+Save your peripheral architectures in a folder!
