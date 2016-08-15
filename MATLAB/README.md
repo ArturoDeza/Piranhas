@@ -76,6 +76,16 @@
 
 	foveal_indx = find(foveal_param_cheap.foveal_mask~=0);
 	```
+
+	If you run:
+	```matlab
+	>>> piranha_sample = create_Piranha_Bench;
+	```
+	
+	you should see the following:
+
+	![PirArchMATLAB](http://imgur.com/SkHypjR.png)
+
 4. Pool your dense feature maps:
 
 	```matlab
