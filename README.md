@@ -12,10 +12,9 @@ The toolkit was originally written in MATLAB, but has been extended to python an
 # What is a Peripheral Architecture?
 A peripheral architecture is a collection of regions that simulate human-like pooling regions and foveal and peripheral like mechanisms. Peripheral Architectures can be simple such as the ones used in "Multiple Object Recognition with Visual Attention" [Ba,Mnih & Kavukucoglu, 2015], or can be more complex given biological constraints such as the one proposed in "Metamers of the Ventral Stream" [Freeman & Simoncelli, 2011].
 
-![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer3](http://imgur.com/SL0WTgH.gif)
-![Observer4](http://imgur.com/uhw8Lq3.gif) ![Observer5](http://imgur.com/SL0WTgH.gif) ![Observer6](http://imgur.com/SL0WTgH.gif)
+![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer3](http://imgur.com/aeUku3o.gif)
 
-A sample collection of 6 human observers doing a single trial of a target search task. Real EyeTracking Data on the right of each subfigure, and on the left Foveated Feature Congestion(FFC) (Deza & Eckstein, 2016) is superimposed given every fixation. Similar visualizations can be extended to computer generated fixations or computer vision models with foveated systems in search (Akbas & Eckstein, 2014). Visualizations were generated using the Piranhas toolkit.
+A sample collection of 3 human observers doing a single trial of a target search task. Real EyeTracking Data on the right of each subfigure, and on the left Foveated Feature Congestion(FFC) (Deza & Eckstein, 2016) is superimposed given every fixation. Similar visualizations can be extended to computer generated fixations or computer vision models with foveated systems in search (Akbas & Eckstein, 2014). Visualizations were generated using the Piranhas toolkit.
 
 # Using Piranhas
 
