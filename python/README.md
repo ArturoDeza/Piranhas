@@ -4,7 +4,7 @@
 
 2. Define your Computer + Human perception parameters.
 
-	Computer perception:
+	Computer parameters:
 	```python
 	>>> import piranhas
 
@@ -17,7 +17,7 @@
 	computer_input = piranhas.monitor(pixel_res_width,pixel_res_height,mon_width,mon_height,view_dist)
 	```
 
-	Human perception:
+	Human parameters:
 	```python
 	>>>visual_field_radius_in_deg = 10
 	>>>fovea = 1.0
