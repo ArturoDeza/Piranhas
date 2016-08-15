@@ -64,7 +64,8 @@ Here is an example of how degrees of visual angle are calculated, this is a stan
 
 Here is a diagram of the human retina and an illustration of how sensor density decreases as a function of eccentricity:
 
-[!Diagram](http://www.webexhibits.org/causesofcolor/images/content/26z.jpg)
+![Diagram](http://www.webexhibits.org/causesofcolor/images/content/26z.jpg)
+Courtesy of  www.webexhibits.org
 
 ## Create a Peripheral Architecture
 
