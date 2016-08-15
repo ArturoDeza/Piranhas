@@ -37,8 +37,8 @@ A: Some papers that have a mixed human + computer perception flavor, be it throu
 * Das, Abhishek, et al. "Human Attention in Visual Question Answering: Do Humans and Deep Networks Look at the Same Regions?." arXiv preprint arXiv:1606.03556 (2016).
 * Kriegeskorte, Nikolaus. "Deep neural networks: A new framework for modeling biological vision and brain information processing." Annual Review of Vision Science 1 (2015): 417-446.
 * Cichy RM, Khosla A, Pantazis D, Torralba A, Oliva A (2016). Comparison of deep neural networks to spatio-temporal cortical dynamics of human visual object recognition reveals hierarchical correspondence SciReports, 6:27755. doi: 10.1038/srep27755.
-* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, NIPS 2016.
-* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, (under review).
+* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel P. Eckstein, NIPS 2016.
+* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel P. Eckstein, (under review).
 
 Do you have a paper at the intersection of more than one vision field? Let us know to expand this preliminary list!
 
@@ -49,20 +49,19 @@ Coming soon!
 
 ### Q: I do Deep Learning, what can I (get out of) / (do for)  Piranhas toolkit?
 
-Deep Learning has begun embracing a strong trend in mimicking neuroscience-like mechanisms in their algorithms. Beginning by Perceptrons with Neurons, hierarchical structure of V1, V2, V4, and IT with Deep Networks with CNN's, and RNN's + LSTM's with Overt Attention Mechanisms.
-While there is still much more work to be done in Deep Learning, and we are far from understanding intelligence there have been remarkable successes
+Deep Learning has begun embracing a strong trend in mimicking neuroscience-like mechanisms in their algorithms. Take for example: Perceptrons with Neurons, hierarchical structure of V1, V2, V4, and IT with Deep Networks with CNN's, and RNN's + LSTM's with Overt Attention Mechanisms.
+While there is still much more work to be done in Deep Learning, and we are far from understanding intelligence, there have been remarkable successes
 in borrowing these ideas from Neuroscience and giving them an engineering twist to make them applicable in Deep Learning systems.
 
-We believe that one of the main unexplored areas in Computer Vision and Deep Learning is the use of a periphery and/or covert systems in recognition, registration and possibly egocentric vision. Perhaps with this toolkit, many deep learning scientists and engineers can help the vision community understand the answer to this question.
+We believe that one of the main unexplored areas in Computer Vision and Deep Learning is the use of a periphery and/or covert systems in recognition, registration and possibly egocentric vision. Perhaps with this toolkit, many deep learning scientists and engineers can help the vision community understand how/why/if peripheral architectures are useful in computer vision.
 
 ### Q: I do Computer Vision, what can I (get out of) / (do for) Piranhas toolkit?
 
-One of the main goals in Computer Vision is give the gift of sight to computers i.e. produce human-like levels of performance in ILSVRC and on image datasets like MNIST,LabelMe, SUN, ImageNet, and MSCOCO. While it is debatable if computers should in fact have the same (artificial) visual perception algorithms as humans, we think that the use of experimenting with clevelrly designed peripheral architectures opens a realm of possibilities for future solutions and new problems in the field of computer vision. 
+One of the main goals in Computer Vision is to give the gift of sight to computers i.e. produce human-like levels of performance in ILSVRC and on image datasets like MNIST, LabelMe, SUN, ImageNet, and MSCOCO. While it is debatable if computers should in fact have the same (artificial) visual perception algorithms as humans, we think that the use of experimenting with cleverly designed peripheral architectures opens a realm of possibilities for future solutions and new problems in the field of computer vision. 
 
 ### Q: I do Robotics, what can I (get out of) / (do for) Piranhas toolkit?
 
-Robotics is a curious field, where Machine Vision plays a partial role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is a current hot topic, and adding peripheral constraints similar to 
-an animals eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you know an eagle has two foveas?
+Robotics is a curious field, where Machine Vision plays a critical role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is a current hot topic, and adding peripheral constraints similar to an animals' eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you that the hummingbird has two [foveas](https://en.wikipedia.org/wiki/Fovea_centralis)?
 
 # Credits & Citation
 Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was written inside the 
@@ -79,10 +78,6 @@ journal = {GitHub repository},
 howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
 }
 ```
-
-### Papers that use Piranhas Toolkit
-* Can Peripheral Representations Improve Clutter Metrics on Complex Scenes? Arturo Deza & Miguel Eckstein, NIPS 2016.
-* Object Detection Through Exploration With A Foveated Visual Field. Emre Akbas & Miguel Eckstein, ArXiv 2014 (under review).
 
 Piranhas is released under the [BSD3-license](https://github.com/ArturoDeza/Piranhas/blob/master/license.txt).
 
