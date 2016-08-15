@@ -66,7 +66,9 @@
 
 	You should see something like this:
 	
-	![PirArchTorch](http://imgur.com/jrRS30o.png)
+	![PirArchTorch](http://imgur.com/gGmWcRJ.png)
+
+	Foveal Trimming is currently being developed for the Torch version.
 
 4. Pool your dense feature maps.
 
