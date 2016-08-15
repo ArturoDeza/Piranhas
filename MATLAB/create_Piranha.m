@@ -45,16 +45,18 @@ bandwidth = 1;
 % Field of View Model Paramaters %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-visual_field_radius_in_deg = 24;
-%visual_field_radius_in_deg = 12;
-%visual_field_radius_in_deg = 10;
-%visual_field_radius_in_deg = 5;
-fovea = 2.0;
-%scale = 0.5; %This scale is for V2
-scale = 0.25; %This scale is for V1
-%scale = 0.5
+% Values used in the Deza & Eckstein, 2016 paper 
+% Warning takes a bunch of space of memory!
+%visual_field_radius_in_deg = 24;
+%fovea = 2.0;
+%scale = 0.25; %
+
+visual_field_radius_in_deg = 14;
+fovea = 1.0;
+scale = 0.25;
 
 e0_in_deg = 0.25;
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Visualization Parameters %
@@ -66,8 +68,9 @@ visual_mask = 1;
 % Compute other parameters:
 [N_e N_theta] = get_pooling_parameters(scale,e0_in_deg,visual_field_radius_in_deg,deg_per_pixel);
 
-%N_e = 5;
-%N_theta = 10;
+% You can also manually put these in:
+% N_e = 5;
+% N_theta = 10;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Compute Peripheral Filters %
@@ -87,8 +90,6 @@ N_e = Ne_check;
 select_mask_stream = cell(N_theta*N_e,1);
 select_mask_label = zeros(peri_height,peri_width);
 
-
-
 for z = 1:N_theta*N_e
 	i1 = rem(z,N_theta);
 	if i1==0
@@ -96,12 +97,7 @@ for z = 1:N_theta*N_e
 	end
 
 	j1 = floor((z-0.1)/N_theta)+1;
-%	select_mask_stream{z} = (squeeze(peripheral_filters.regions(i1,j1,:,:))~=0); %Previous implementation
-%	select_mask_stream{z} = (squeeze(peripheral_filters.regions(i1,j1,:,:))>=0); %Bad
 	select_mask_stream{z} = squeeze(peripheral_filters.regions(i1,j1,:,:));
-
-	%Previuous implementation:
-	%select_mask_label = select_mask_label + select_mask_stream{z}*z;
 
 	%New implementation:
 	select_mask_label(sub2ind(size(select_mask_stream{z}),find(select_mask_stream{z})))=z;
@@ -120,6 +116,7 @@ for i=1:N_theta
 	clear point_vector;
 end
 
+% Get Foveal Radius
 foveal_radius = ceil(mean(dist_mask));
 
 foveal_radius_px = foveal_radius;
@@ -167,8 +164,6 @@ for mm=1:wave_num*orien
 
 	filter_bank_stream{mm+wave_num*orien} = filter_bank{i1}{j1}{2};
 end
-
-%clock_over1 = toc(clock_time)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create list of Foveal Parameters %
