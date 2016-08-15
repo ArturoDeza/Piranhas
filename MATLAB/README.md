@@ -2,7 +2,8 @@
 
 1. Download the Piranhas toolbox for MATLAB.
 2. Define your Computer + Human perception parameters.
-Fill in some stuff here!
+
+	Fill in some stuff here!
 3. Create a Peripheral Architecture.
 	```matlab
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,3 +69,6 @@ Fill in some stuff here!
 	```matlab
 	> pool_dense_map_demo1
 	```
+
+### Tips and tricks:
+Save your peripheral architectures in a folder!
