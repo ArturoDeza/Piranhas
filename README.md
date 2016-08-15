@@ -15,9 +15,7 @@ A peripheral architecture is a collection of regions that simulate human-like po
 ![Observer1](http://imgur.com/uhw8Lq3.gif) ![Observer2](http://imgur.com/SL0WTgH.gif) ![Observer3](http://imgur.com/SL0WTgH.gif)
 ![Observer4](http://imgur.com/uhw8Lq3.gif) ![Observer5](http://imgur.com/SL0WTgH.gif) ![Observer6](http://imgur.com/SL0WTgH.gif)
 
-<p align="center">
-Top: A sample collection of 6 observers doing a single trial of a target search task. Real EyeTracking Data on the right of each subfigure, and on the left Foveated Feature Congestion is superimposed given every fixation. The visualization was generated using the Piranhas toolkit.
-</p>
+A sample collection of 6 human observers doing a single trial of a target search task. Real EyeTracking Data on the right of each subfigure, and on the left Foveated Feature Congestion(FFC) Deza & Eckstein, 2016 is superimposed given every fixation. The visualization was generated using the Piranhas toolkit. Similar visualizations can be extended to computer generated fixations (Akbas & Eckstein).
 
 # Using Piranhas
 
