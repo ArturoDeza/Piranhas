@@ -8,13 +8,13 @@
 	o = o or {}
 	setmetatable(o, self)
 	self.__index = self
+	-- Computer parameters:
 	self.pixel_res_width = 800 -- in pixels
 	self.pixel_res_height = 800 -- in pixels
 	self.mon_width = 37.5 -- in cm
 	self.mon_height = 30 -- in cm
 	self.view_dist = 64 -- in cm
-	self.gamma_c = 1 -- gabor parameter
-	self.psi_c = 0 -- gabor parameter
+	-- Computed from above:
 	self.cm_per_pixel = (self.mon_width)/(self.pixel_res_width)
 	self.deg_per_pixel = 2*math.deg(math.atan(self.cm_per_pixel/2/self.view_dist))
 	-- Gabor Filter parameters
@@ -22,11 +22,16 @@
 	self.wave_num = 3
 	self.freq_zero = 1.0
 	self.bandwidth = 1.0
-	-- Field of View Model Parameters
+	self.gamma_c = 1 -- gabor parameter
+	self.psi_c = 0 -- gabor parameter
+	-- Human parameters:
+	-- Field of View Model Parameters:
 	self.visual_field_radius_in_deg = 10.0
 	self.fovea = 1.0
 	self.scale = 0.5
+	-- e_0 set to 0.25
 	self.e0_in_deg = 0.25
+	-- visualization toggles
 	self.visual = 1
 	self.visual_mask = 1
 	return o
@@ -39,6 +44,7 @@
 
 	-- Load the piranhas module
 	require 'piranhas'
+	-- require 'torch' (used inside piranhas.lua functions)
 
 	param = param:param_init_all(nil)
 
@@ -59,7 +65,12 @@
 	```
 
 4. Pool your dense feature maps.
+
 	Coming soon!
+
+5. For a demo run the script in Step 3 or
+	```lua
+	th> create_Piranhas.lua
 
 ### Tips and tricks:
 Save your peripheral architectures in a folder!
