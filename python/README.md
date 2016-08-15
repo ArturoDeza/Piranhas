@@ -1,6 +1,6 @@
 #Piranhas [Python 2.7]
 
-1. Download the Piranhas toolbox for python.
+1. Download the Piranhas toolbox for python. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn about these parameters.
 
 2. Define your Computer + Human perception parameters.
 

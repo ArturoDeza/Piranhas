@@ -1,6 +1,6 @@
 #Piranhas [Torch7]
 
-1. Download the Piranhas toolbox for torch.
+1. Download the Piranhas toolbox for torch. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn about these parameters.
 
 2. Define your Computer + Human perception parameters.
 

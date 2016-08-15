@@ -1,9 +1,52 @@
 #Piranhas [MATLAB R2012a]
 
-1. Download the Piranhas toolbox for MATLAB.
+1. Download the Piranhas toolbox for MATLAB. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn more about these parameters.
 2. Define your Computer + Human perception parameters.
+	```matlab
+	% All of this code is implemented inside the create_Piranha function
+	% showed in Step 3.
+		
+	%%%%%%%%%%%%%%%%%%%%%%
+	% Monitor Parameters %
+	%%%%%%%%%%%%%%%%%%%%%%
 
-	Fill in some stuff here!
+	param.pixel_res_width = 800; % in pixels
+	param.pixel_res_height = 600; % in pixels
+
+	%param.pixel_res_width = 1024;
+	%param.pixel_res_height = 768;
+
+	%param.pixel_res_width = 1280;
+	%param.pixel_res_height = 1024;
+
+	param.mon_width = 37.5; % in cm
+	param.mon_height = 30; % in cm
+
+	%param.view_dist = 76; % in cm
+	param.view_dist = 64;
+	%param.view_dist = 38;
+	param.gamma_c = 1;
+	param.psi_c = 0;
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Field of View Model Paramaters %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Values used in the Deza & Eckstein, 2016 paper 
+	% Warning takes a bunch of space of memory!
+	visual_field_radius_in_deg = 24;
+	fovea = 2.0;
+	scale = 0.25; %
+
+
+	e0_in_deg = 0.25;
+
+	visual_field_radius_in_deg = 10;
+	fovea = 1.0;
+	scale = 0.25;
+	```
+
+
 3. Create a Peripheral Architecture.
 	```matlab
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
