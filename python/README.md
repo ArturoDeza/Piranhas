@@ -30,6 +30,10 @@
 	```python
 	python -i create_Piranha.py
 	```
+	
+	You should see something like this:
+	![FovealArchPython](http://imgur.com/Jmgnm34.png)
+
 4. Pool your dense feature maps:
 
 	Coming Soon!
