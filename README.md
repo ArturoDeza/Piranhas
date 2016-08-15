@@ -21,7 +21,7 @@ A sample collection of 6 human observers doing a single trial of a target search
 
 1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in [Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB), [python](https://github.com/ArturoDeza/Piranhas/tree/master/python) or [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch):
 
-2. Define your Computer + Human perception parameters.
+2. Define your Computer + Human perception parameters. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn about these parameters.
 
 3. Create a Peripheral Architecture.
 
