@@ -115,7 +115,7 @@ class foveal_param:
 	visual_mask = 0
 	deg_per_pixel = None
 
-	monitor_settings = None
+	monitor_settings = monitor
 
 
 	# All of these parameters will be passed after the initial params are defined and computed
@@ -134,6 +134,42 @@ class foveal_param:
 		self.cm_per_pixel = monitor_input.mon_width/monitor_input.pixel_res_width
 		self.deg_per_pixel = 2*math.degrees(math.atan(self.cm_per_pixel/2/monitor_input.view_dist))
 	
+###################################
+# Define Cheap Foveal param class #
+###################################
+class foveal_param_cheap():
+	peri_height = None
+	peri_width = None
+	foveal_radius_px = None
+	N_e = None
+	N_theta = None
+	select_mask_stream = None
+	foveal_mask = None
+	deg_per_pixel = None
+	peripheral_filters = None
+	monitor_settings = monitor
+
+
+############################################################
+# 'Cheapify' memory of Peripheral Architecture for pooling #
+############################################################
+
+def cheapify_foveal_param(foveal_param_in):
+	foveal_param_cheap_out = foveal_param_cheap
+	foveal_param_cheap_out.peri_height = foveal_param_in.peri_height
+	foveal_param_cheap_out.peri_width = foveal_param_in.peri_width
+	foveal_param_cheap_out.foveal_radius_px = foveal_param_in.foveal_radius_px
+	foveal_param_cheap_out.N_e = foveal_param_in.N_e
+	foveal_param_cheap_out.N_theta = foveal_param_in.N_theta
+	foveal_param_cheap_out.select_mask_stream = foveal_param_in.select_mask_stream
+	foveal_param_cheao_out.foveal_mask = foveal_param_in.foveal_mask
+	foveal_param_cheap_out.deg_per_pixel = foveal_param_in.deg_per_pixel
+	foveal_param_cheap_out.monitor_settings = foveal_param_in.monitor_settings
+	foveal_param_cheap_out.peripheral_filters = foveal_param_in.peripheral_filters
+
+	return foveal_param_cheap_out
+
+
 ###########################################
 # Compute Eccentricity + Theta parameters #
 ###########################################
@@ -220,7 +256,9 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 	# Initialize hyperparameters for g function
 
 	e_0 = e0_in_deg
-	e_r = visual_field_width*math.sqrt(2)/2*deg_per_pixel
+	e_r = visual_field_width*math.sqrt(2)/2*deg_per_pixel #sqrt(2) term will affect if you choose the
+	#e_r to be diagonal or horizontal.
+	#e_r = visual_field_width/2*deg_per_pixel
 
 	N_ecc = N_e
 	w_ecc = (math.log(e_r)-math.log(e_0))/N_ecc
@@ -231,7 +269,8 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 	for j in range(0,int(round(N_ecc-1))+1):
 		for i in range(1, int(round(visual_field_width + 1 + visual_field_width))):
 		
-			arg_g[j,i] = (math.log((i-1+0.00001)*e_r/(visual_field_width*math.sqrt(2))) - (math.log(e_0)+w_ecc*(j)))/w_ecc
+			#arg_g[j,i] = (math.log((i-1+0.00001)*e_r/(visual_field_width*math.sqrt(2))) - (math.log(e_0)+w_ecc*(j)))/w_ecc
+			arg_g[j,i] = (math.log((i-1+0.00001)*e_r/(visual_field_width)) - (math.log(e_0)+w_ecc*(j+1)))/w_ecc
 		
 			if arg_g[j,i] < -0.75:
 				g_vec[j,i] = 0

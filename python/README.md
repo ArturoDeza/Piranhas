@@ -33,7 +33,7 @@
 	
 	You should see something like this:
 	
-	![FovealArchPython](http://imgur.com/Jmgnm34.png)
+	![FovealArchPython](http://imgur.com/KuNdKtp.png)
 
 4. Pool your dense feature maps:
 
