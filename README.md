@@ -4,8 +4,8 @@ A Toolkit for creating Peripheral Architectures.
 ![FoveatedRepresentations](/images/Total_Foveated_Cartoon.png)
 
 This toolkit was implemented and used to create the peripheral architectures of the papers:
-* **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel P. Eckstein, NIPS 2016.
-* **_Object Detection Through Exploration With A Foveated Visual Field_**. Emre Akbas & Miguel P. Eckstein, ArXiv 2014 (under review).
+* [**_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**](http://arxiv.org/abs/1608.04042v1). Arturo Deza & Miguel P. Eckstein, NIPS 2016.
+* [**_Object Detection Through Exploration With A Foveated Visual Field_**](https://arxiv.org/abs/1408.0814). Emre Akbas & Miguel P. Eckstein (under review).
 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
@@ -71,7 +71,7 @@ Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was
 If you found this code useful for your research, please cite:
 ```
 @misc{Deza2016piranhas,
-author = {Deza, Arturo and Abkas, Emre and Eckstein, Miguel P.},
+author = {Deza, Arturo and Akbas, Emre and Eckstein, Miguel P.},
 title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
 year = {2016},
 publisher = {GitHub},
