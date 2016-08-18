@@ -45,7 +45,7 @@ Do you have a paper at the intersection of more than one vision field? Let us kn
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
-Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo). 
+Please view the [Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB), [python](https://github.com/ArturoDeza/Piranhas/tree/master/python) or [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch) tutorials. Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo). 
 Coming soon!
 
 ### Q: I do Deep Learning, what can I (get out of) / (do for)  Piranhas toolkit?
