@@ -1,5 +1,8 @@
 function [N_e N_theta] = get_pooling_parameters(scale,e0_in_deg,visual_field_radius_in_deg,deg_per_pixel)
 
+%The following conversions have been computed from the Freeman & Simoncelli 2011 paper: Metamers of the Ventral Stream.
+%See their Supplementary material (drawings) for more information of the scale, N_e, and N_theta parameter.
+
 w_theta = scale/2;
 %N_theta = ceil(2*pi/w_theta); %Previous implementation
 N_theta = floor(2*pi/w_theta);
