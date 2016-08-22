@@ -20,7 +20,7 @@ Top: A sample collection of 3 human observers doing a single trial of a target s
 
 1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in [Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB), [python](https://github.com/ArturoDeza/Piranhas/tree/master/python) or [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch):
 
-2. Define your Computer + Human perception parameters. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn more about these parameters.
+2. Define your Computer + Human perception parameters. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn more about these parameters. *Note the Monitor parameters are the parameters of the monitor where EyeTracking or psychophsyics were performed.
 
 3. Create a Peripheral Architecture.
 
