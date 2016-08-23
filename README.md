@@ -3,7 +3,7 @@ A Toolkit for creating Peripheral Architectures.
 
 ![FoveatedRepresentations](/images/Total_Foveated_Cartoon.png)
 
-This toolkit was implemented and used to create the peripheral architectures of the papers:
+This toolkit was implemented and used to create the peripheral architectures _a la_ [**_Freeman and Simoncelli_**](http://www.ncbi.nlm.nih.gov/pubmed/21841776) of the papers:
 * [**_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**](http://arxiv.org/abs/1608.04042v1). Arturo Deza & Miguel P. Eckstein, NIPS 2016.
 * [**_Object Detection Through Exploration With A Foveated Visual Field_**](https://arxiv.org/abs/1408.0814). Emre Akbas & Miguel P. Eckstein (under review).
 
