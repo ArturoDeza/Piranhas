@@ -1,6 +1,4 @@
-function peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel, ...
-    N_e, N_theta, visual_field_radius_in_deg, fovea, e0_in_deg, visual)
-
+function peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel,N_e, N_theta, visual_field_radius_in_deg, fovea, e0_in_deg, visual)
 
 e_max = visual_field_radius_in_deg;
 
@@ -9,9 +7,7 @@ visual_field_width = round(2*(visual_field_radius_in_deg./deg_per_pixel));
 center_r = round(visual_field_width/2);
 center_c = center_r;
 
-
 regions = create_regions_vector_function_smooth_FS(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
-
 regions = permute(regions,[3 4 1 2]);
 
 %% compute centers & sizes of pooling regions
@@ -40,7 +36,7 @@ for nt=1:N_theta
 end
 
 
-%Create a filters structure:
+% Create a filters structure:
 
 filters = [];
 filters.regions = regions;
@@ -75,15 +71,16 @@ foveal_map_colored = double(zeros(visual_field_width,visual_field_width,3));
 for i=1:nt
 	for j=1:ne
 		for z=1:size(filters.uniq_pix{i,j},1)
+
 			foveal_map_colored(filters.uniq_pix{i,j}(z,1),filters.uniq_pix{i,j}(z,2),1) = c_map((i-1)*ne+j,1);
 			foveal_map_colored(filters.uniq_pix{i,j}(z,1),filters.uniq_pix{i,j}(z,2),2) = c_map((i-1)*ne+j,2);
 			foveal_map_colored(filters.uniq_pix{i,j}(z,1),filters.uniq_pix{i,j}(z,2),3) = c_map((i-1)*ne+j,3);
+
 		end
 	end
 end
 
 if visual
-
 	figure;imshow(foveal_map_colored);
 	hold on;
 	for i=1:N_theta
@@ -180,11 +177,9 @@ for i=1:size(peripheral_filters.offsets,1)
     end
 end
 
-%peripheral_filters = rmfield(peripheral_filters, 'uniq_pix');
-
 % Optional: Draw a box around the fovea:
 
-%% visualize it
+% visualize it
 if visual
 
     W = reshape(peripheral_filters.regions, [numel(peripheral_filters.offsets),visual_field_width visual_field_width]);

@@ -1,20 +1,6 @@
 function regions = create_regions_vector_function_smooth_FS(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e)
 
-%Comment for final function version.
-%clc;close all;clear all;
-
-%Parameters for testing:
-%deg_per_pixel = 0.022;
-%visual_field_radius_in_deg = 5; 
-%e0_in_deg = .49;
-%N_theta = 20;
-%N_e = 4; 
-
-%visual_field_radius_in_deg = e_max;
-
 visual = 1;
-
-%visual_field_width = round(2*(visual_field_radius_in_deg./deg_per_pixel));
 
 center_r = round(visual_field_width/2);
 center_c = center_r;
@@ -22,9 +8,11 @@ center_c = center_r;
 regions = zeros(visual_field_width,visual_field_width, N_theta, N_e);
 
 visual_field_width_half = round((visual_field_width/2));
-%visual_field_max = sqrt(2*visual_field_width_half^2);
 visual_field_max = 2*visual_field_width_half;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define the function f(x) from Eq.1 in paper. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x_vec = linspace(-1,1,visual_field_width);
 y_vec = zeros(1,visual_field_width);
@@ -42,30 +30,24 @@ for i=1:visual_field_width
 end
 
 %Plot only one curve:
-%N_theta = 20;
 w_theta = 2*pi/N_theta;
+
 t=1/2;
-%t=0; %changed this since back to t=1/2 tiling was not smooth in center horizontal axis
+% t=0; 
+% changed this since back to t=1/2 tiling was not 
+% smooth in center horizontal axis
 
 h = zeros(1,visual_field_width);
 
 arg_h = zeros(N_theta,visual_field_width+1+visual_field_width);
 h_vec = zeros(N_theta,visual_field_width+1+visual_field_width);
 
-%arg_h = zeros(N_theta,visual_field_width+1);%+1+visual_field_width);
-%h_vec = zeros(N_theta,visual_field_width+1);%+1+visual_field_width);
-
-
-%Check? Should be padded with NaN's?
-
-
 %for j=0:(N_theta-1)
 for j=0:N_theta
 	for i=1:visual_field_width+1+visual_field_width
-	%for i=1:visual_field_width
+
 		%Going from 0 to 2*pi:
 		arg_h(j+1,i) = (((i-1)*1.0/visual_field_width)*2*pi-((w_theta*j)+(w_theta*(1-t)/2)))/w_theta;
-		%arg_h(j+1,i) = (((i)*1.0/visual_field_width)*2*pi-((w_theta*j)+(w_theta*(1-t)/2)))/w_theta-1;
 	
 		if arg_h(j+1,i)<-0.75
 			h_vec(j+1,i) = 0;
@@ -83,8 +65,6 @@ for j=0:N_theta
 	end
 end
 
-%Optional
-%h_vec = h_vec(:,18:end);
 
 if visual 
 	figure();
@@ -97,12 +77,10 @@ if visual
 	set(gca,'XTick',[0:visual_field_width/8:visual_field_width]);
 end
 
-%Now plot the Filter value of g(n) vs Retinal eccentricity
+% Now plot the Filter value of g(n) vs Retinal eccentricity
 
-%e_0 = 1.5;
+
 e_0 = e0_in_deg;
-%e_r = N_theta;
-%e_r = visual_field_width*sqrt(2)/2*deg_per_pixel;
 e_r = visual_field_width/2*deg_per_pixel;
 
 %20 degrees of visual angle:
@@ -115,24 +93,12 @@ w_ecc = (log(e_r) - log(e_0))/N_ecc;
 arg_g = zeros(N_ecc,visual_field_width+1+visual_field_width);
 g_vec = zeros(N_ecc,visual_field_width+1+visual_field_width);
 
-%arg_g = zeros(N_ecc,visual_field_width+1);%+1+visual_field_width);
-%g_vec = zeros(N_ecc,visual_field_width+1);%+1+visual_field_width);
-
-%Check? should be padded with NaN's?
-
-
 for j=0:(N_ecc-1)
-%for j=0:N_ecc
+
 	for i=1:visual_field_width+1+visual_field_width
-	%for i=1:visual_field_width
-		%Going from 0 to 2*pi:
-		%arg_g(j+1,i) = (log((i-1)*e_r/(visual_field_width*sqrt(2)/2))-(log(e_0)+w_ecc*(j+1)))/w_ecc;
-		%arg_g(j+1,i) = (log((i-1)*e_r/visual_field_width/sqrt(2))-(log(e_0)+w_ecc*(j)))/w_ecc;
-		%arg_g(j+1,i) = (log((i-1)*e_r/(visual_field_width*sqrt(2)/2))-(log(e_0)+w_ecc*(j+1)))/w_ecc;
-		%arg_g(j+1,i) = (log((i-1)*e_r/(visual_field_width*sqrt(2)))-(log(e_0)+w_ecc*(j+1)))/w_ecc;
+
 		arg_g(j+1,i) = (log((i-1)*e_r/(visual_field_width))-(log(e_0)+w_ecc*(j+1)))/w_ecc;
 	
-
 		if arg_g(j+1,i)<-0.75
 			g_vec(j+1,i) = 0;
 		elseif (arg_g(j+1,i)>=-0.75) && (arg_g(j+1,i)<-0.25)
@@ -150,7 +116,6 @@ for j=0:(N_ecc-1)
 end
 
 if visual
-
 	figure();
 	hold on;
 	for i=1:N_ecc
@@ -166,8 +131,8 @@ end
 h_vec = h_vec(:,1:end-1);
 g_vec = g_vec(:,1:end-1);
 
-
-%Now get the x,y coordinates from the polar coordinates
+% Now get the x,y coordinates from the polar coordinates
+% This is where the magic happens [AD]
 
 map = double(zeros(visual_field_width,visual_field_width));
 map2 = double(zeros(visual_field_width,visual_field_width));
