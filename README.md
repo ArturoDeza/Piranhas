@@ -3,9 +3,9 @@ A Toolkit for creating Peripheral Architectures.
 
 ![FoveatedRepresentations](/images/Total_Foveated_Cartoon.png)
 
-This toolkit was implemented and used to create the peripheral architectures of the papers:
-* **_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**. Arturo Deza & Miguel P. Eckstein, NIPS 2016.
-* **_Object Detection Through Exploration With A Foveated Visual Field_**. Emre Akbas & Miguel P. Eckstein, ArXiv 2014 (under review).
+This toolkit was implemented and used to create the peripheral architectures _a la_ [**_Freeman and Simoncelli_**](http://www.ncbi.nlm.nih.gov/pubmed/21841776) of the papers:
+* [**_Can Peripheral Representations Improve Clutter Metrics on Complex Scenes?_**](http://arxiv.org/abs/1608.04042v1). Arturo Deza & Miguel P. Eckstein, NIPS 2016.
+* [**_Object Detection Through Exploration With A Foveated Visual Field_**](https://arxiv.org/abs/1408.0814). Emre Akbas & Miguel P. Eckstein (under review).
 
 The toolkit was originally written in MATLAB, but has been extended to python and Torch to increase cross-collaborations between fields of vision science, computer vision and deep learning. Piranhas stands for Peripheral Architectures for Natural, Hybrid and Artificial Systems, we decided to make our toolkit public to stimulate possible 'hybrid' ideas in the general vision (human,computer,robot) community.
 
@@ -20,7 +20,7 @@ Top: A sample collection of 3 human observers doing a single trial of a target s
 
 1. Download the Piranhas toolbox to create Peripheral Architectures at your convenience in [Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB), [python](https://github.com/ArturoDeza/Piranhas/tree/master/python) or [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch):
 
-2. Define your Computer + Human perception parameters. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn more about these parameters.
+2. Define your Computer + Human perception parameters. Read the [Tutorial](https://github.com/ArturoDeza/Piranhas/tree/master/Tutorial) to learn more about these parameters. *Note the Monitor parameters are the parameters of the monitor where EyeTracking or psychophsyics were performed.
 
 3. Create a Peripheral Architecture.
 
@@ -45,7 +45,7 @@ Do you have a paper at the intersection of more than one vision field? Let us kn
 
 ### Q: I want to create my own peripheral architecture, what should I do?
 
-Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo). 
+Please view the [Matlab](https://github.com/ArturoDeza/Piranhas/tree/master/MATLAB), [python](https://github.com/ArturoDeza/Piranhas/tree/master/python) or [Torch](https://github.com/ArturoDeza/Piranhas/tree/master/torch) tutorials. Once you have a functional architecture, you are more than welcome to add it to the Piranha School (similar to the Caffe Model Zoo). 
 Coming soon!
 
 ### Q: I do Deep Learning, what can I (get out of) / (do for)  Piranhas toolkit?
@@ -71,7 +71,7 @@ Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was
 If you found this code useful for your research, please cite:
 ```
 @misc{Deza2016piranhas,
-author = {Deza, Arturo and Abkas, Emre and Eckstein, Miguel P.},
+author = {Deza, Arturo and Akbas, Emre and Eckstein, Miguel P.},
 title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
 year = {2016},
 publisher = {GitHub},

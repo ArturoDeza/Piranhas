@@ -66,7 +66,7 @@ Drawing courtesy of [Katie Koelher](http://koehler.moonfruit.com/home/4580555573
 
 Above is a sketch that shows how degrees of visual angle are calculated, this is a standard practice in vision science when working with EyeTracking technology (See [EyeLink 1000 SR Research, User Manual](http://sr-research.jp/support/EyeLink%201000%20User%20Manual%201.5.0.pdf) for more information).
 
-Here is a diagram of the human retina and an illustration of how sensor density decreases as a function of eccentricity:
+Here is a diagram of the human retina and an illustration of how photoreceptor density decreases as a function of eccentricity:
 
 ![Diagram](http://www.webexhibits.org/causesofcolor/images/content/26z.jpg)
 Courtesy of  www.webexhibits.org
