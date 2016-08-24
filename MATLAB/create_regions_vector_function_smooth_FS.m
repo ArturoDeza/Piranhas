@@ -35,7 +35,7 @@ for i=1:visual_field_width
 	elseif (x_vec(i)>=-0.25) && (x_vec(i)<0.25)
 		y_vec(i) = 1;
 	elseif (x_vec(i)>=0.25) && (x_vec(i)<0.75)
-		y_vec(i) = -(cos(pi/2*((x_vec(i)+0.75)*2)))^2;
+		y_vec(i) = 1-(cos(pi/2*((x_vec(i)-0.75)*2)))^2;
 	else
 		%Do nothing
 	end
@@ -44,8 +44,8 @@ end
 %Plot only one curve:
 %N_theta = 20;
 w_theta = 2*pi/N_theta;
-%t=1/2;
-t=0;
+t=1/2;
+%t=0; %changed this since back to t=1/2 tiling was not smooth in center horizontal axis
 
 h = zeros(1,visual_field_width);
 
@@ -59,8 +59,8 @@ h_vec = zeros(N_theta,visual_field_width+1+visual_field_width);
 %Check? Should be padded with NaN's?
 
 
-for j=0:(N_theta-1)
-%for j=0:N_theta
+%for j=0:(N_theta-1)
+for j=0:N_theta
 	for i=1:visual_field_width+1+visual_field_width
 	%for i=1:visual_field_width
 		%Going from 0 to 2*pi:
@@ -298,7 +298,7 @@ for i=1:visual_field_width
 		g_buffer_indx = find(g_vec(:,dist_match)>0);
 
 		% Get Shadow tones of every region. This is useful for Metamer Construction
-		% Since every pooling region is locally constructed and the blended
+		% Since every pooling region is locally constructed and then blended
 			
 		for z1 = 1:length(h_buffer_indx)
 			for z2 = 1:length(g_buffer_indx)

@@ -1,60 +1,16 @@
 function peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel, ...
     N_e, N_theta, visual_field_radius_in_deg, fovea, e0_in_deg, visual)
 
-%Arturo's to go settings:
-%deg_per_pixel = 0.022;
-%visual_field_radius_in_deg = 10; %=e_max
-%e0_in_deg = 1;
 
-%N_theta = 20;
-%N_e = 4;
-%visual = 1; 
-
-%% 
-% smallest eccentricity
-%e0_in_deg = .49;
 e_max = visual_field_radius_in_deg;
 
-%% 
 visual_field_width = round(2*(visual_field_radius_in_deg./deg_per_pixel));
 
 center_r = round(visual_field_width/2);
 center_c = center_r;
 
-%regions = zeros(visual_field_width,visual_field_width, N_theta, N_e);
 
-%% generate pooling regions
-%h=waitbar(0,'');
-%for raw_r=1:visual_field_width
-%    %waitbar( raw_r/visual_field_width, h);
-%    for raw_c=1:visual_field_width       
-%        r = raw_r - center_r;
-%        c = raw_c - center_c;
-%        
-%        % convert (r,c) to polar: (eccentricity, angle)
-%        e = sqrt(r^2+c^2)*deg_per_pixel;
-%        a = mod(atan2(r,c),2*pi);
-%        
-%        for nt=1:N_theta
-%            for ne=1:N_e
-%                regions(raw_r, raw_c, nt, ne) = ...
-%                    FS_hntheta(nt-1,a,N_theta) * ...
-%                    FS_gne(ne-1,e,N_e,e0_in_deg, e_max);
-%            end
-%        end
-%    end
-%end
-
-%regions = zeros(visual_field_width,visual_field_width, N_theta, N_e);
-
-%Non Smooth implementation:
-%regions = create_regions_vector_function(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
-
-%Smooth implementation:
 regions = create_regions_vector_function_smooth_FS(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
- 
-
-%close(h)
 
 regions = permute(regions,[3 4 1 2]);
 
@@ -64,26 +20,34 @@ areas = zeros(N_theta, N_e);
 
 mask_matrix = zeros(N_theta,N_e);
 
-for nt=1:N_theta
-    for ne=1:N_e
-        mask = squeeze(regions(nt, ne, :, :));
-        [r,c] = find(mask);
-        centers(:, nt, ne) = [mean(r) mean(c)];
-        areas(nt,ne) = length(r);
+%Add extra region to make entire tiling smooth
+for ne=1:N_e
+	regions(1,ne,:,:) = regions(1,ne,:,:) + regions(N_theta+1,ne,:,:);
+end
 
-	mask_matrix(nt,ne) = sum(sum(isnan(mask)));
-    end
+%Now remove it:
+regions(N_theta+1,:,:,:) = [];
+
+for nt=1:N_theta
+  for ne=1:N_e
+    mask = squeeze(regions(nt, ne, :, :));
+    [r,c] = find(mask);
+    centers(:, nt, ne) = [mean(r) mean(c)];
+    areas(nt,ne) = length(r);
+
+		mask_matrix(nt,ne) = sum(sum(isnan(mask)));
+  end
 end
 
 
-%% 
+%Create a filters structure:
+
 filters = [];
 filters.regions = regions;
 filters.centers = centers;
 filters.areas = areas;
 
-%blindspot_threshold = 0.4;
-%blindspot_threshold = 0.1;
+% Regulating Blindspot creates unsmooth regions.
 blindspot_threshold = 0.0;
 
 %% offset coordinates for pooling regions
@@ -133,13 +97,10 @@ if visual
 	%Check if these match
 	disp(nt);disp(N_theta);
 	disp(ne);disp(N_e);
-
 end
 
 %% visualize it
-%W = reshape(filters.regions, [N_e*(N_theta)  visual_field_width visual_field_width]);
 W = reshape(filters.regions, [(N_e)*N_theta  visual_field_width visual_field_width]);
-
 W = squeeze(max(W,[],1));
 
 if visual
@@ -170,13 +131,13 @@ if visual
 	figure;imshow(foveal_map_colored2);
 end
 
+%%%%%%%%%%%%%%%%%%%
+% Foveal Trimming %
+%%%%%%%%%%%%%%%%%%%
 
-%% discard the cells within the fovea
-%fovea_radius = e0_in_deg;
-%fovea_radius = 1;
+% Here we discard the cells within the fovea
 
 fovea_radius = fovea;
-
 peripheral_filters = filters;
 
 % decide upto which cell to discard (along the radial axis)
@@ -213,19 +174,15 @@ for i=1:size(peripheral_filters.offsets,1)
     for j=1:size(peripheral_filters.offsets,2)
         valids = peripheral_filters.weights{i,j}>weight_threshold;
         
-        peripheral_filters.offsets{i,j} = ...
-            peripheral_filters.offsets{i,j}(valids,:);
-        
-        peripheral_filters.weights{i,j} = ...
-            peripheral_filters.weights{i,j}(valids);
-        
+        peripheral_filters.offsets{i,j} = peripheral_filters.offsets{i,j}(valids,:);
+        peripheral_filters.weights{i,j} = peripheral_filters.weights{i,j}(valids);
         peripheral_filters.areas(i,j) = sum(valids);        
     end
 end
 
 %peripheral_filters = rmfield(peripheral_filters, 'uniq_pix');
 
-%Optional: Draw a box around the fovea:
+% Optional: Draw a box around the fovea:
 
 %% visualize it
 if visual
