@@ -116,7 +116,7 @@ foveal_input.visual_mask = human_input.visual_mask
 foveal_input.deg_per_pixel = human_input.deg_per_pixel
 
 foveal_input.monitor_settings.pixel_res_width = computer_input.pixel_res_width
-foveal_input.monitor_settings.pixel_res_height = computer_.pixel_res_height
+foveal_input.monitor_settings.pixel_res_height = computer_input.pixel_res_height
 foveal_input.monitor_settings.mon_width = computer_input.mon_width
 foveal_input.monitor_settings.mon_height = computer_input.mon_height
 foveal_input.monitor_settings.view_dist = computer_input.view_dist

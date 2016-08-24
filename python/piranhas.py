@@ -137,6 +137,7 @@ class foveal_param:
 ###################################
 # Define Cheap Foveal param class #
 ###################################
+
 class foveal_param_cheap():
 	peri_height = None
 	peri_width = None
@@ -201,7 +202,8 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 	center_r = round(visual_field_width/2)
 	center_c = center_r
 
-	regions = np.zeros((visual_field_width,visual_field_width,N_theta,N_e))
+	#regions = np.zeros((visual_field_width,visual_field_width,N_theta,N_e))
+	regions = np.zeros((visual_field_width,visual_field_width,N_theta+1,N_e))
 
 	visual_field_width_half = round(visual_field_width*1.0/2) # before this was not multiplied by 1.0
 	visual_field_max = np.sqrt(2*pow(visual_field_width_half,2))
@@ -216,21 +218,29 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 		elif (x_vec[i] >= -0.25) and (x_vec[i] < 0.25):
 			y_vec[i] = 1.0
 		elif (x_vec[i] >= 0.25) and (x_vec[i] < 0.75):
-			y_vec[i] = -pow(math.cos((np.pi/2)*((x_vec[i]+0.75)*2)),2)
+			y_vec[i] = 1.0-pow(math.cos((np.pi/2)*((x_vec[i]+0.75)*2)),2)
 
 	# Initialize hyperparameters for h function
 
 	w_theta = 2*np.pi/N_theta
-	t = 0
+	t = 0.5
 
 	# Creating the h function.
 
 	h = np.zeros(visual_field_width)
 
-	arg_h = np.zeros((N_theta,visual_field_width + 1 + visual_field_width))
-	h_vec = np.zeros((N_theta,visual_field_width + 1 + visual_field_width))
+	#Before smoothness correction:
+	#arg_h = np.zeros((N_theta+1,visual_field_width + 1 + visual_field_width))
+	#h_vec = np.zeros((N_theta+1,visual_field_width + 1 + visual_field_width))
 
-	for j in range(0,int(round(N_theta-1))+1):
+	#Correcting Smoothness
+	arg_h = np.zeros((N_theta+1,visual_field_width + 1 + visual_field_width))
+	h_vec = np.zeros((N_theta+1,visual_field_width + 1 + visual_field_width))
+
+
+	#Before Smoothness correction:
+	#for j in range(0,int(round(N_theta-1))+1):
+	for j in range(0,int(round(N_theta))+1):
 		for i in range(1,int(round(visual_field_width + 1 + visual_field_width))):
 		
 			arg_h[j,i] = (((i-1)*1.0/visual_field_width)*2*np.pi - ((w_theta*j)+(w_theta*(1-t)/2)))/w_theta
@@ -302,9 +312,12 @@ def create_regions_vector_function_smooth(e0_in_deg,e_max,visual_field_width,deg
 	ang_sign = 1
 
 	#Create empty maps:
+	# Before smoothness correction:
+	#map_hybrid = np.zeros((((visual_field_width,visual_field_width,N_theta,N_ecc))))
+	#map_hybrid2 = np.zeros((((visual_field_width,visual_field_width,N_theta,N_ecc))))
 
-	map_hybrid = np.zeros((((visual_field_width,visual_field_width,N_theta,N_ecc))))
-	map_hybrid2 = np.zeros((((visual_field_width,visual_field_width,N_theta,N_ecc))))
+	map_hybrid = np.zeros((((visual_field_width,visual_field_width,N_theta+1,N_ecc))))
+	map_hybrid2 = np.zeros((((visual_field_width,visual_field_width,N_theta+1,N_ecc))))
 
 	ang_hybrid = np.zeros((visual_field_width,visual_field_width))
 	ecc_hybrid = np.zeros((visual_field_width,visual_field_width))
@@ -450,6 +463,13 @@ def generate_pooling_regions_vector_smooth(deg_per_pixel,N_e,N_theta,visual_fiel
 
 	regions = regions.transpose([2,3,0,1])
 	#fovea = 1.0 #uncomment to pilot studies
+
+	for ne in range(0,int(N_e)):
+		regions[0,ne,:,:] = regions[0,ne,:,:] + regions[N_theta,ne,:,:]
+
+	# Get rid of supplementary pooling region
+	# since we already fused it.
+	regions = regions[:N_theta,:,:,:]
 
 	centers = np.zeros(((2,N_theta,N_e)))
 	areas = np.zeros((N_theta,N_e))
