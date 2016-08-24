@@ -37,6 +37,10 @@ t=1/2;
 % changed this since back to t=1/2 tiling was not 
 % smooth in center horizontal axis
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define h_n(theta) function %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 h = zeros(1,visual_field_width);
 
 arg_h = zeros(N_theta,visual_field_width+1+visual_field_width);
@@ -65,6 +69,7 @@ for j=0:N_theta
 	end
 end
 
+% Visualize it:
 
 if visual 
 	figure();
@@ -77,26 +82,21 @@ if visual
 	set(gca,'XTick',[0:visual_field_width/8:visual_field_width]);
 end
 
-% Now plot the Filter value of g(n) vs Retinal eccentricity
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define g_n(theta) function %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 e_0 = e0_in_deg;
 e_r = visual_field_width/2*deg_per_pixel;
 
-%20 degrees of visual angle:
-
 N_ecc = N_e;
-%N_ecc = 4;
 w_ecc = (log(e_r) - log(e_0))/N_ecc;
-
 
 arg_g = zeros(N_ecc,visual_field_width+1+visual_field_width);
 g_vec = zeros(N_ecc,visual_field_width+1+visual_field_width);
 
 for j=0:(N_ecc-1)
-
 	for i=1:visual_field_width+1+visual_field_width
-
 		arg_g(j+1,i) = (log((i-1)*e_r/(visual_field_width))-(log(e_0)+w_ecc*(j+1)))/w_ecc;
 	
 		if arg_g(j+1,i)<-0.75
@@ -115,11 +115,12 @@ for j=0:(N_ecc-1)
 	end
 end
 
+% Visualize it:
+
 if visual
 	figure();
 	hold on;
 	for i=1:N_ecc
-	%for i=1:N_ecc
 		plot(g_vec(i,1:visual_field_width),'LineWidth',2);
 	end
 	axis([0 visual_field_width 0 1]);
@@ -132,7 +133,7 @@ h_vec = h_vec(:,1:end-1);
 g_vec = g_vec(:,1:end-1);
 
 % Now get the x,y coordinates from the polar coordinates
-% This is where the magic happens [AD]
+% [AD]: This is where the magic happens
 
 map = double(zeros(visual_field_width,visual_field_width));
 map2 = double(zeros(visual_field_width,visual_field_width));
@@ -144,9 +145,15 @@ ang_sign = +1;
 map_hybrid = zeros(visual_field_width,visual_field_width,N_theta,N_ecc);
 map_hybrid2 = zeros(visual_field_width,visual_field_width,N_theta,N_ecc);
 
-
 ang_hybrid = zeros(visual_field_width,visual_field_width);
 ecc_hybrid = zeros(visual_field_width,visual_field_width);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Span entire visual field %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Maybe these two for-loops have space for optimization?
+% Could be done in parallel?
 
 for i=1:visual_field_width
 	for j=1:visual_field_width
@@ -197,11 +204,10 @@ for i=1:visual_field_width
 			true_ang = atan2(visual_field_width_half-i,1) + pi;
 		end
 
-
-		%find closest angle match:
+		% find closest angle match:
 		ang_match = round(true_ang/(2*pi)*visual_field_width);
 
-		%find closest eccentricity match:
+		% find closest eccentricity match:
 		dist_match = round(dist/(visual_field_width/2)*visual_field_width);
 
 
@@ -213,22 +219,22 @@ for i=1:visual_field_width
 			dist_match = 1;
 		end
 
-		%Get Hybrid Computations
+		% Get Hybrid Computations
 		ang_hybrid(i,j) = ceil(true_ang/(2*pi)*N_theta);
 
-		%if ang_hybrid(i,j) == 0
+		% if ang_hybrid(i,j) == 0
 		if ang_hybrid(i,j) <= 0
 			ang_hybrid(i,j) = 1;
 		end
 
 		ecc_hybrid(i,j) = ceil(dist_match/visual_field_max/2*N_ecc);
 
-		%Added in Version 4
+		% Added in Version 4
 		if ecc_hybrid(i,j)>N_ecc
 			ecc_hybrid(i,j) = N_ecc;
 		end
 
-		%Also find theta value and eccentricity
+		% Also find theta value and eccentricity
 		theta_temp = ceil(ang_match/(visual_field_width/N_theta));
 		true_ang_matrix(i,j) = true_ang;
 
@@ -268,7 +274,6 @@ for i=1:visual_field_width
 		for z1 = 1:length(h_buffer_indx)
 			for z2 = 1:length(g_buffer_indx)
 				map_hybrid2(i,j,h_buffer_indx(z1),g_buffer_indx(z2)) = h_vec(h_buffer_indx(z1),ang_match).*g_vec(g_buffer_indx(z2),dist_match);
-
 			end
 		end
 
@@ -276,6 +281,7 @@ for i=1:visual_field_width
 		map2(i,j) = max(hybrid_buffer(:));
 	end
 end
+
 
 if visual 
 	figure();

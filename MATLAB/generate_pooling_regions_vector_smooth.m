@@ -63,11 +63,12 @@ for nt=1:size(filters.regions,1)
     end
 end
 
+% Create Color palette:
 c_map = hsv(nt*ne);
 
 foveal_map_colored = double(zeros(visual_field_width,visual_field_width,3));
 
-%Paint unique pixels
+% Paint unique pixels
 for i=1:nt
 	for j=1:ne
 		for z=1:size(filters.uniq_pix{i,j},1)
