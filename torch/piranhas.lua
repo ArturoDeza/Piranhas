@@ -104,17 +104,18 @@ function create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per
 	-- Initalize hyperparameters for the h function:
 
 	w_theta = 2*math.pi/N_theta
-	t = 0
+	t = 0.5
 
 	-- Creating the h function
 
 	h = torch.zeros(visual_field_width)
 
-	arg_h = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
-	h_vec = torch.zeros(N_theta,visual_field_width + 1 + visual_field_width)
+	arg_h = torch.zeros(N_theta+1,visual_field_width + 1 + visual_field_width)
+	h_vec = torch.zeros(N_theta+1,visual_field_width + 1 + visual_field_width)
 
 	-- Trying to tie MATLAB implementation:
-	for j=0,N_theta-1 do
+	-- for j=0,N_theta-1 do
+	for j=0,N_theta do 
 		for i=1,visual_field_width + 1 + visual_field_width do
 			arg_h[j+1][i] = (((i-1)*1.0/visual_field_width)*2*math.pi - ((w_theta*j)+(w_theta)*(1-t)/2))/w_theta
 
@@ -194,8 +195,8 @@ function create_regions_vector_smooth(e0_in_deg,e_max,visual_field_width,deg_per
 
 	ang_sign = 1
 
-	map_hybrid = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta,N_e}) 
-	map_hybrid2 = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta,N_e}) 
+	map_hybrid = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta+1,N_e}) 
+	map_hybrid2 = torch.zeros(torch.LongStorage{visual_field_width,visual_field_width,N_theta+1,N_e}) 
 
 	ang_hybrid = torch.zeros(visual_field_width,visual_field_width) 
 	ecc_hybrid = torch.zeros(visual_field_width,visual_field_width) 
