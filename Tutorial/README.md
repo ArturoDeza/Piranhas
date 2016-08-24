@@ -1,6 +1,6 @@
 ## Define your Computer parameters:
 
-In python/piranhas.py @param_init():
+These are the parameters of your computer monitor:
 
 ```python
 pixel_res_width = 800 # in pixels
@@ -17,17 +17,21 @@ calculate equivalent image/target appearance in terms of d.v.a. (degrees of visu
 
 ## Define your Human parameters:
 
-In python/piranhas.py @param_init():
+These are human perceptual parameters when doing psychophysics or an eye tracking experiment:
 
 ```python
 view_dist = 64 # in cm
 cm_per_pixel = mon_width/pixel_res_width;
 deg_per_pixel = 2*math.degrees(math.atan(cm_per_pixel/2/view_dist))
 
-
   ##################################
   # Field of View Model Parameters #
   ##################################
+
+	# These parameters are the peripheral architecture's specific model parameters:
+	# The number of Eccentricities and Pooling regions per eccentricity are computed
+	# from the scale parameter.
+	# They can also be fed in manually.
   
   visual_field_radius_in_deg = 10 # This is the total visual field_radius in deg
   fovea = 1.0 # This is the approximate foveal radius.
