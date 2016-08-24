@@ -76,7 +76,7 @@ visual_mask = 1;
 % Compute Peripheral Filters %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel, N_e, N_theta, visual_field_radius_in_deg, fovea,e0_in_deg, visual);
+peripheral_filters = generate_pooling_regions_vector_smooth(deg_per_pixel,N_e,N_theta,visual_field_radius_in_deg,fovea,e0_in_deg,visual);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Compute Peripheral Mask stream %
@@ -110,7 +110,7 @@ end
 for i=1:N_theta
 	for j=1:size(peripheral_filters.offsets{i,1})
 		point_buff = peripheral_filters.offsets{i,1}(j,:);
-		point_vector(j) = norm(point_buff);
+		point_vector(j) = norm(double(point_buff));
 	end
 	dist_mask(i) = min(point_vector);
 	clear point_vector;

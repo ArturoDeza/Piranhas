@@ -110,7 +110,7 @@ end
 for i=1:N_theta
 	for j=1:size(peripheral_filters.offsets{i,1})
 		point_buff = peripheral_filters.offsets{i,1}(j,:);
-		point_vector(j) = norm(point_buff);
+		point_vector(j) = norm(double(point_buff));
 	end
 	dist_mask(i) = min(point_vector);
 	clear point_vector;
