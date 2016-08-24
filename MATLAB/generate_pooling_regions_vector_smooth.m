@@ -7,14 +7,16 @@ visual_field_width = round(2*(visual_field_radius_in_deg./deg_per_pixel));
 center_r = round(visual_field_width/2);
 center_c = center_r;
 
+% Create pooling regions function
 regions = create_regions_vector_function_smooth_FS(e0_in_deg,e_max,visual_field_width,deg_per_pixel,N_theta,N_e);
+
 regions = permute(regions,[3 4 1 2]);
 
 %% compute centers & sizes of pooling regions
 centers = zeros(2, N_theta, N_e);
 areas = zeros(N_theta, N_e);
 
-mask_matrix = zeros(N_theta,N_e);
+%mask_matrix = zeros(N_theta,N_e);
 
 %Add extra region to make entire tiling smooth
 for ne=1:N_e
@@ -30,8 +32,7 @@ for nt=1:N_theta
     [r,c] = find(mask);
     centers(:, nt, ne) = [mean(r) mean(c)];
     areas(nt,ne) = length(r);
-
-		mask_matrix(nt,ne) = sum(sum(isnan(mask)));
+		%mask_matrix(nt,ne) = sum(sum(isnan(mask)));
   end
 end
 
@@ -44,6 +45,7 @@ filters.centers = centers;
 filters.areas = areas;
 
 % Regulating Blindspot creates unsmooth regions.
+% blindspot_threshold = 0.3;
 blindspot_threshold = 0.0;
 
 %% offset coordinates for pooling regions
@@ -52,14 +54,14 @@ center_c = round(size(filters.regions,4)/2);
 for nt=1:size(filters.regions,1)
     for ne=1:size(filters.regions,2)
         [rs,cs] = find(squeeze(filters.regions(nt,ne,:,:))>0);
-        filters.offsets{nt,ne} = [rs-center_r cs-center_c];
+        filters.offsets{nt,ne} = int16([rs-center_r cs-center_c]);
         idxs = sub2ind(size(filters.regions), nt*ones(size(rs)), ne*ones(size(rs)), rs, cs);
         filters.weights{nt,ne} = filters.regions(idxs);
         
         % unique pixels for this cell
         [rs,cs] = find(squeeze(filters.regions(nt,ne,:,:))>blindspot_threshold);
 
-        filters.uniq_pix{nt,ne} = [rs cs];
+        filters.uniq_pix{nt,ne} = int16([rs cs]);
     end
 end
 
@@ -80,6 +82,7 @@ for i=1:nt
 		end
 	end
 end
+
 
 if visual
 	figure;imshow(foveal_map_colored);
@@ -161,10 +164,6 @@ peripheral_filters.uniq_pix = peripheral_filters.uniq_pix(:,n_e:end);
 
 % discard low weight pixels
 weight_threshold = 0.0;
-%weight_threshold = .3;
-
-%Decreaste the low weight to improve interpolation values:
-%weight_threshold = 0.1;
 
 peripheral_filters.regions(peripheral_filters.regions(:)<=weight_threshold) = 0;
 
