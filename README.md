@@ -64,21 +64,9 @@ One of the main goals in Computer Vision is to give the gift of sight to compute
 
 Robotics is a curious field, where Machine Vision plays a critical role in the general pipeline that includes developing algorithms for locomotion, planning, and sensing. Creating robots with human or animal like characteristics is a current hot topic, and adding peripheral constraints similar to an animals' eye may play an important role in path-planning for an agent in its environment, and may lead to intuitions of how an animal might explore an environment given its (artificially created) visual limitations. Fun fact: Did you that the hummingbird has two [foveas](https://en.wikipedia.org/wiki/Fovea_centralis)?
 
-# Credits & Citation
+# Credits
 Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was written inside the 
 [VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm).
-
-If you found this code useful for your research, please cite:
-```
-@misc{Deza2016piranhas,
-author = {Deza, Arturo and Akbas, Emre and Eckstein, Miguel P.},
-title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
-year = {2016},
-publisher = {GitHub},
-journal = {GitHub repository},
-howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
-}
-```
 
 Piranhas is released under the [BSD3-license](https://github.com/ArturoDeza/Piranhas/blob/master/license.txt).
 
