@@ -86,7 +86,7 @@
 
 	![PirArchMATLAB](http://imgur.com/SkHypjR.png)
 
-4. Pool your dense feature maps:
+4. Pool your dense feature maps as in (Deza & Eckstein, 2016):
 
 	```matlab
 
@@ -117,6 +117,9 @@
 
 	foveal_map = pool_dense_map(foveal_param_cheap,dense_map,peri_indx,foveal_indx,y_coord,x_coord,visual_toggle,y_lower_in,y_upper_in,x_lower_in,x_upper_in))
 	```
+
+	![DenseAndFoveatedFeatures](http://i.imgur.com/VL0g79x.png)
+
 5. For a demo run from the MATLAB command line prompt:
 
 	```matlab
