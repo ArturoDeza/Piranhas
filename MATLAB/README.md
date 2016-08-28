@@ -86,7 +86,7 @@
 
 	![PirArchMATLAB](http://imgur.com/SkHypjR.png)
 
-4. Pool your dense feature maps as in (Deza & Eckstein, 2016):
+4. Pool your dense feature maps similar to (Deza & Eckstein, 2016):
 
 	```matlab
 
@@ -124,7 +124,11 @@
 
 	```matlab
 	> pool_dense_map_demo1
+	figure();imagesc(dense_map);
+	figure();imagesc(foveal_map);	
 	```
+
+	
 
 ### Tips and tricks:
 Save your peripheral architectures in a folder!
