@@ -68,6 +68,18 @@ Robotics is a curious field, where Machine Vision plays a critical role in the g
 Piranhas Toolkit was mainly written by Arturo Deza, and Emre Akbas. All code was written inside the 
 [VIU-Lab @ UCSB](https://labs.psych.ucsb.edu/eckstein/miguel/index.htm).
 
+If you found this code useful for your research, consider citing:
+```
+@misc{Deza2016piranhas,
+author = {Deza, Arturo and Akbas, Emre and Eckstein, Miguel P.},
+title = {Piranhas Toolkit: Peripheral Architectures for Natural, Hybrid and Artificial Systems}
+year = {2016},
+publisher = {GitHub},
+journal = {GitHub repository},
+howpublished = {\url{https://github.com/ArturoDeza/Piranhas}}
+}
+```
+
 Piranhas is released under the [BSD3-license](https://github.com/ArturoDeza/Piranhas/blob/master/license.txt).
 
 README.md file written by Arturo Deza.
